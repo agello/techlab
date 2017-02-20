@@ -28,19 +28,19 @@ Once the client has been downloaded, it must be placed on the system in a direct
 ** Linux **
 
 `` `
-~ / Bin
+~/Bin
 `` `
 
 ** macOS **
 
 `` `
-~ / Bin
+~/Bin
 `` `
 
 ** Windows **
 
 `` `
-C: \ OpenShift \
+C:\OpenShift\
 `` `
 
 ## Proper authorization on Linux and macOS
@@ -48,8 +48,8 @@ C: \ OpenShift \
 The oc client must be able to run.
 
 `` `
-Cd ~ / bin
-Chmod + x oc
+Cd ~/bin
+chmod +x oc
 `` `
 
 ## register the oc client in the PATH
@@ -58,7 +58,7 @@ Under ** Linux ** and ** macOS ** the directory ~ / bin is already in the PATH, 
 
 If the oc client has been placed in a different directory, the PATH can be set as follows:
 `` `
-$ Export PATH = $ PATH: [path to oc client]
+$ Export PATH = $PATH: [path to oc client]
 `` `
 
 ### Windows
@@ -71,7 +71,7 @@ On Windows, the PATH can be configured in the advanced system settings. This is 
 
 ** Windows Quickhack **
 
-Place the oc client directly in the directory * C: \ Windows *.
+Place the oc client directly in the directory * C:\Windows *.
 
 
 ## Verify the installation
@@ -83,7 +83,7 @@ $ Oc version
 The following output should be displayed:
 `` `
 Oc v1.3.1
-Kubernetes v1.3.0 + 52492b4
+Kubernetes v1.3.0+52492b4
 `` `
 
 If this is not the case, the PATH variable may not be set correctly.
