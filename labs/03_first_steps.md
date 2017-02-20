@@ -1,92 +1,92 @@
-# Lab 3: Erste Schritte auf der Lab Plattform
+# Lab 3: Getting Started on the Lab Platform
 
-In diesem Lab werden wir gemeinsam das erste Mal mit der Lab Plattform interagieren, dies sowohl über den oc Client wie auch über die Web Console
+In this lab, we will be interacting with the Lab platform for the first time, via the oc client as well as via the web console
 
 ## Login
 
-**Note:** Versichern Sie sich, dass Sie [Lab 2](02_cli.md) erfolgreich abgeschlossen haben.
+** Note: ** Make sure you have successfully completed [Lab 2] (02_cli.md).
 
-Bitte verwenden Sie für das Login auf dem Webinterface sowie mit `oc` die durch den Instruktor zur Verfügung gestellten Angaben.
-
-
-## Projekt erstellen
-
-Ein Projekt in OpenShift ist das Top Level Konzept um ihre Applikationen, Deployments, Builds, Container etc. zu organisieren. Siehe [Lab1](01_quicktour.md).
+Please use the information provided by the instructor for the login on the web interface as well as with `oc`.
 
 
-## Aufgabe: LAB3.1
-Erstellen Sie auf der Lab Plattform ein neues Projekt.
+## Create a project
 
-**Note**: Verwenden Sie für Ihren Projektnamen am besten Ihren Github Namen oder ihren Nachnamen, bspw. `[USER]-example1`
+A project in OpenShift is the top level concept to organize your applications, deployments, builds, containers, etc. See [Lab1] (01_quicktour.md).
 
-> Wie kann ein neues Projekt erstellt werden?
 
-**Tipp** :information_source:
-```
-$ oc help
-```
+## Task: LAB3.1
+Create a new project on the lab platform.
+
+** Note **: For your project name, use your github name or your last name, for example `[USER] -example1`
+
+> How can I create a new project?
+
+** Tip **: information_source:
+`` `
+$ Oc help
+`` `
 
 ## Web Console
 
-Die OpenShift V3 Web Console erlaubt es den Benutzern gewisse Tasks direkt via Browser vorzunehmen.
+The OpenShift V3 Web Console allows users to perform certain tasks directly via a browser.
 
-## Aufgabe: LAB3.2
-1. Loggen Sie sich nun via Web Console auf der Lab Plattform ein.
+## Task: LAB3.2
+1. Log on to the Lab platform using the Web Console.
 
-  **Note:** Die **URL**, Benutzernamen und Passwort für Ihren Account wird Ihnen entsprechend am Techlab durch den Instruktor zur Verfügung gestellt.
+  ** Note: ** The ** URL **, user name and password for your account will be provided to you by Techlab by the Instructor.
 
-1. Gehen Sie nun in die Übersicht Ihres eben erstellten Projektes. Aktuell ist das Projekt noch leer.
+1. Now go to the overview of your newly created project. Currently the project is still empty.
 
-1. Fügen Sie über *Add to Project* Ihre erste Applikation Ihrem Projekt hinzu. Als Beispielprojekt verwenden wir ein APPUiO Example.
+1. Add your first application to your project using * Add to Project *. As an example project, we use an APPUiO Example.
 
-  3.1. Wählen Sie dazu das Basis Image **php 5.6** aus
-![php5.6](../images/lab_3_php5.6.png)
+  3.1. Select the base image ** php 5.6 **
+! [Php5.6] (../ images / lab_3_php5.6.png)
 
-  3.2. Geben Sie Ihrem Beispiel einen sprechenden Namen und folgende URL als Repo URL
-  ```
-  https://github.com/appuio/example-php-sti-helloworld.git
-  ```
-![php5.6](../images/lab_3_example1.png)
+  3.2. Give your example a speaking name and the following URL as Repo URL
+  `` `
+  Https://github.com/appuio/example-php-sti-helloworld.git
+  `` `
+! [Php5.6] (../ images / lab_3_example1.png)
 
-1. Die Applikation wurde erstellt. Über den Link **Continue to overview** kommt man zur Übersicht.
+1. The application has been created. The link ** Continue to overview ** gives you an overview.
 
-1. Der Build Ihrer Applikation wird gestartet. Verfolgen Sie den Build und schauen Sie sich nach dem Deployment die Beispiel App an.
+1. The build of your application is started. Follow the build and look at the sample app after deployment.
 
-![php5.6](../images/lab_3_example1-deployed.png)
+! [Php5.6] (../ images / lab_3_example1-deployed.png)
 
 
-Sie haben nun ihre erste Applikation mittels sogenanntem **[Source to Image](https://docs.openshift.com/container-platform/3.3/architecture/core_concepts/builds_and_image_streams.html#source-build)** Build auf OpenShift deployed.
+You have now deployed your first application using the so-called ** [Source to Image] ** build on OpenShift deployed .
 
-**Tipp:** mit dem folgenden Command können Sie in ein anderes Projekt wechseln:
-```
-$ oc project [projectname]
-```
+** Tip: ** Use the following command to switch to another project:
+`` `
+$ Oc project [projectname]
+`` `
 
-**Tipp:** Mit den folgenden Befehlen kann das obere Beispiel aus der Kommandozeile erstellt werden:
-```
-$ oc new-app https://github.com/appuio/example-php-sti-helloworld.git --name=appuio-php-sti-example
-$ oc expose svc appuio-php-sti-example
-```
+** Tip: ** The following commands can be used to create the above example from the command line:
+`` `
+$ Oc new-app https://github.com/appuio/example-php-sti-helloworld.git --name = appuio-php-sti-example
+$ Oc expose svc appuio-php-sti-example
+`` `
 
-**Tipp:** eine ganze App kann mit dem folgenden Befehl gelöscht werden:
-```
-$ oc delete all -l app=appname
-```
-bspw.
-```
-$ oc delete all -l app=appuio-php-sti-example
-```
+** Tip: ** a whole app can be deleted with the following command:
+`` `
+$ Oc delete all -l app = appname
+`` `
+For example,
+`` `
+$ Oc delete all -l app = appuio-php-sti-example
+`` `
 
 ---
 
-## Lösung: LAB3.1
+## Solution: LAB3.1
 
-```
-$ oc new-project [USER]-example1
-```
+`` `
+$ Oc new-project [USER] -example1
+`` `
 ---
 
-**Ende Lab 3**
+** End Lab 3 **
 
-<p width="100px" align="right"><a href="04_deploy_dockerimage.md">Ein Docker Image deployen →</a></p>
-[← zurück zur Übersicht] (../README.md)
+<P width = "100px" align = "right"> <a href="04_deploy_dockerimage.md"> Deploying a Docker Image → </a> </ p>
+[← back to overview] (../README.md)
