@@ -1,92 +1,92 @@
-# Lab 11: Applikationstemplates
+# Lab 11: Application notes
 
-In diesem Lab zeigen wir auf, wie Templates ganze Infrastrukturen beschreiben und entsprechend mit einem Befehl instanziert werden können.
+In this lab we show how templates can describe entire infrastructures and can be instantiated with a command.
 
 ## Templates
 
-Wie Sie in den vorangegangenen Labs gesehen haben, können einfach über die Eingabe unterschiedlicher Befehle Applikationen, Datenbanken, Services und deren Konfiguration erstellt und deployt werden.
+As you've seen in the previous labs, you can easily create and deploy applications, databases, services, and their configuration by entering different commands.
 
-Dies ist fehleranfällig und eignet sich schlecht zum Automatisieren.
+This is error-prone and is not suitable for automating.
 
-OpenShift bietet dafür das Konzept von Templates, in welchen man eine Liste von Ressourcen beschreiben kann, die parametrisiert werden können. Sie sind also quasi ein Rezept für eine ganze Infrastruktur (bspw. 3 ApplikationsContainer, eine Datenbank mit Persistent Storage)
+OpenShift offers the concept of templates in which you can describe a list of resources that can be parameterized. So you are almost a recipe for a whole infrastructure (for example, 3 application containers, a database with Persistent Storage)
 
-**Note:** der Clusteradmin kann globale Templates erstellen, welche allen Usern zur Verfügung stehen.
+** Note: ** Clusteradmin can create global templates, which are available to all users.
 
-Alle vorhandenen Templates anzeigen
-```
-$ oc get template -n openshift
-```
+View all existing templates
+`` `
+$ Oc get template -n openshift
+`` `
 
-Über die Web Console kann dies via "Add to Project" gemacht werden, über diese Funktionalität können Templates direkt instanziert werden.
+Using the Web Console, this can be done via "Add to Project". This functionality allows templates to be directly instantiated.
 
-Diese Templates können im Json Format sowohl im Git Repositors neben ihrem Source Code abgelegt werden wie auch über eine URL aufgerufen oder gar lokal im Filesystem abgelegt sein.
+These templates can be stored in Jons format in the Git repository next to their source code, as well as via a URL called or even locally stored in the filesystem.
 
-## Aufgabe: LAB11.1: Template instanzieren.
+## Task: LAB11.1: Instance Template.
 
-Die einzelnen Schritte die wir in den vorherigen Labs manuell vorgenommen haben, können nun mittels Template in einem "Rutsch" durchgeführt werden.
+The individual steps we have done manually in the previous labs can now be carried out using a template in a "slide".
 
-```
-$ oc new-project [USER]-template
-```
+`` `
+$ Oc new-project [USER] -template
+`` `
 
-Template erstellen
+Create template
 
-```
-$ oc create -f https://raw.githubusercontent.com/appuio/example-spring-boot-helloworld/master/example-spring-boot-template.json
-```
+`` `
+$ Oc create -f https://raw.githubusercontent.com/appuio/example-spring-boot-helloworld/master/example-spring-boot-template.json
+`` `
 
-Template instanzieren (Ersetzen Sie `[project]` mit `[USER]-template`)
+Template (Replace `[project]` with `[USER] -template`)
 
-```
-$ oc new-app example-spring-boot
+`` `
+$ Oc new-app example-spring-boot
 
---> Deploying template example-spring-boot for "example-spring-boot"
+-> Deploying template example-spring-boot for "example-spring-boot"
      With parameters:
-      APPLICATION_DOMAIN=
-      MYSQL_DATABASE_NAME=appuio
-      MYSQL_USER=appuio
-      MYSQL_PASSWORD=appuio
-      MYSQL_DATASOURCE=jdbc:mysql://mysql/appuio?autoReconnect=true
-      MYSQL_DRIVER=com.mysql.jdbc.Driver
---> Creating resources ...
-    imagestream "example-spring-boot" created
-    deploymentconfig "example-spring-boot" created
-    deploymentconfig "mysql" created
-    route "example-spring-boot" created
-    service "example-spring-boot" created
-    service "mysql" created
---> Success
+      APPLICATION_DOMAIN =
+      MYSQL_DATABASE_NAME = appuio
+      MYSQL_USER = appuio
+      MYSQL_PASSWORD = appuio
+      MYSQL_DATASOURCE = jdbc: mysql: // mysql / appuio? AutoReconnect = true
+      MYSQL_DRIVER = com.mysql.jdbc.Driver
+-> Creating resources ...
+    Imagestream "example-spring-boot" created
+    Deploymentconfig "example-spring-boot" created
+    Deploymentconfig "mysql" created
+    Route "example-spring-boot" created
+    Service "example-spring-boot" created
+    Service "mysql" created
+-> Success
     Run 'oc status' to view your app.
 
-```
+`` `
 
-Mittels:
-```
-oc deploy example-spring-boot --latest
-```
+By means of:
+`` `
+Oc deploy example-spring-boot --latest
+`` `
 
-startet OpenShift danach einen Build und deployt die Container wie im Template spezifiziert.
+OpenShift then starts a build and deployes the containers as specified in the template.
 
-**Tipp:** Sie könnten Templates auch direkt verarbeiten in dem Sie ein Template direkt `$ oc new-app -f template.json -p Param = value` aufrufen
+** Tip: ** You could also process templates directly by calling a template directly `$ oc new-app -f template.json -p Param = value`
 
-Als Abschluss dieses Labs können Sie sich noch das Template anschauen
-```
-https://github.com/appuio/example-spring-boot-helloworld/blob/master/example-spring-boot-template.json
-```
+To conclude this lab you can still see the template
+`` `
+Https://github.com/appuio/example-spring-boot-helloworld/blob/master/example-spring-boot-template.json
+`` `
 
 
-**Note:** Bestehende Ressourcen können als Template exportiert werden, verwenden Sie dafür den `oc export [ResourceType] --as-myapptemplate` Command.
-Bspw.
+** Note: ** Existing resources can be exported as a template using the `oc export [ResourceType] --as-myapptemplate` command.
+For example,
 
-```
-oc export is,bc,dc,route,service --as-template=example-spring-boot -o json > example-spring-boot-template.json
-```
+`` `
+Oc export is, bc, dc, route, service --as-template = example-spring-boot -o json> example-spring-boot-template.json
+`` `
 
-Wichtig ist, dass die Imagestreams zuoberst im Template File definiert sind. Ansonsten wird der erste Build nicht funktionieren.
+It is important that the Imagestreams are defined at the top in the template file. Otherwise, the first build will not work.
 
 ---
 
-**Ende Lab 11**
+** End Lab 11 **
 
-<p width="100px" align="right"><a href="12_template_creation.md">Eigene Templates erstellen →</a></p>
-[← zurück zur Übersicht] (../README.md)
+<P width = "100px" align = "right"> <a href="12_template_creation.md"> Create your own templates → </a> </ p>
+[← back to overview] (../README.md)
