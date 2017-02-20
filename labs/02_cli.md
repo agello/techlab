@@ -1,111 +1,111 @@
-# Lab 2: OpenShift CLI installieren
+# Lab 2: Installing OpenShift CLI
 
-In diesem Lab werden wir gemeinsam den oc Client installieren und konfigurieren, damit wir danach die ersten Schritte auf der OpenShift Techlab Plattform durchführen können.
+In this lab, we will jointly install and configure the oc client so that we can then take the first steps on the OpenShift Techlab platform.
 
 ## Command Line Interface
 
-Der **oc client** stellt ein Interface zu OpenShift V3 bereit.
+The ** oc client ** provides an interface to OpenShift V3.
 
-Der Client ist in Go programmiert und kommt als einzelnes Binary für die folgenden Betriebsysteme daher:
+The client is programmed in Go and comes as a single binary for the following operating systems:
 
 - Microsoft Windows
 - macOS
 - Linux
 
 
-## oc Client herunterladen und installieren
+## oc Download and install client
 
-Der oc Client wird vom [GitHub-Repository von OpenShift Origin](https://github.com/openshift/origin/releases/tag/v1.3.2) heruntergeladen:
+The oc client is downloaded from the [GitHub Repository of OpenShift Origin] (https://github.com/openshift/origin/releases/tag/v1.3.2):
 
-* [Windows](https://github.com/openshift/origin/releases/download/v1.3.2/openshift-origin-client-tools-v1.3.2-ac1d579-windows.zip)
-* [Mac](https://github.com/openshift/origin/releases/download/v1.3.2/openshift-origin-client-tools-v1.3.2-ac1d579-mac.zip)
-* [Linux 64bit](https://github.com/openshift/origin/releases/download/v1.3.2/openshift-origin-client-tools-v1.3.2-ac1d579-linux-64bit.tar.gz  )
-* [Linux 32bit](https://github.com/openshift/origin/releases/download/v1.3.2/openshift-origin-client-tools-v1.3.2-ac1d579-linux-32bit.tar.gz)
-* [CHECKSUM](https://github.com/openshift/origin/releases/download/v1.3.2/CHECKSUM)
+* [Windows] (https://github.com/openshift/origin/releases/download/v1.3.2/openshift-origin-client-tools-v1.3.2-ac1d579-windows.zip)
+* [Mac] (https://github.com/openshift/origin/releases/download/v1.3.2/openshift-origin-client-tools-v1.3.2-ac1d579-mac.zip)
+* [Linux 64bit] (https://github.com/openshift/origin/releases/download/v1.3.2/openshift-origin-client-tools-v1.3.2-ac1d579-linux-64bit.tar.gz)
+* [Linux 32bit] (https://github.com/openshift/origin/releases/download/v1.3.2/openshift-origin-client-tools-v1.3.2-ac1d579-linux-32bit.tar.gz)
+* [CHECKSUM] (https://github.com/openshift/origin/releases/download/v1.3.2/CHECKSUM)
 
-Sobald der Client heruntergeladen wurde, muss er auf dem System in einem Verzeichnis, das über den **PATH** erreichbar ist, abgelegt werden.
+Once the client has been downloaded, it must be placed on the system in a directory accessible via the ** PATH **.
 
-**Linux**
+** Linux **
 
-```
-~/bin
-```
+`` `
+~ / Bin
+`` `
 
-**macOS**
+** macOS **
 
-```
-~/bin
-```
+`` `
+~ / Bin
+`` `
 
-**Windows**
+** Windows **
 
-```
-C:\OpenShift\
-```
+`` `
+C: \ OpenShift \
+`` `
 
-## Korrekte Berechtigung auf Linux und macOS erteilen
+## Proper authorization on Linux and macOS
 
-Der oc Client muss ausgeführt werden können.
+The oc client must be able to run.
 
-```
-cd ~/bin
-chmod +x oc
-```
+`` `
+Cd ~ / bin
+Chmod + x oc
+`` `
 
-## den oc Client im PATH registrieren
+## register the oc client in the PATH
 
-Unter **Linux** und **macOS** ist das Verzeichnis ~/bin bereits im PATH, daher muss hier nichts gemacht werden.
+Under ** Linux ** and ** macOS ** the directory ~ / bin is already in the PATH, so nothing has to be done here.
 
-Falls der oc Client in einem anderen Verzeichnis abgelegt wurde, kann der PATH wie folgt gesetzt werden:
-```
-$ export PATH=$PATH:[path to oc client]
-```
+If the oc client has been placed in a different directory, the PATH can be set as follows:
+`` `
+$ Export PATH = $ PATH: [path to oc client]
+`` `
 
 ### Windows
 
-Unter Windows kann der PATH in den erweiterten Systemeinstellungen konfiguriert werden. Dies ist abhängig von der entsprechenden Windows Version:
+On Windows, the PATH can be configured in the advanced system settings. This is dependent on the corresponding Windows version:
 
-- [Windows 7](http://geekswithblogs.net/renso/archive/2009/10/21/how-to-set-the-windows-path-in-windows-7.aspx)
-- [Windows 8](http://www.itechtics.com/customize-windows-environment-variables/)
-- [Windows 10](http://techmixx.de/windows-10-umgebungsvariablen-bearbeiten/)
+- [Windows 7] (http://geekswithblogs.net/renso/archive/2009/10/21/how-to-set-the-windows-path-in-windows-7.aspx)
+- [Windows 8] (http://www.itechtics.com/customize-windows-environment-variables/)
+- [Windows 10] (http://techmixx.de/windows-10-umgebungsvariablen-bearbeiten/)
 
-**Windows Quick Hack**
+** Windows Quickhack **
 
-Legen sie den oc Client direkt im Verzeichnis *C:\Windows* ab.
+Place the oc client directly in the directory * C: \ Windows *.
 
 
-## Installation verifizieren
+## Verify the installation
 
-Der oc Client sollte jetzt korrekt installiert sein. Am besten überprüfen wir das, indem wir den folgenden Command ausführen:
-```
-$ oc version
-```
-Der folgende Output sollte angezeigt werden:
-```
-oc v1.3.1
-kubernetes v1.3.0+52492b4
-```
+The oc client should now be installed correctly. The best way to do this is to run the following command:
+`` `
+$ Oc version
+`` `
+The following output should be displayed:
+`` `
+Oc v1.3.1
+Kubernetes v1.3.0 + 52492b4
+`` `
 
-Ist dies nicht der Fall, ist möglicherweise die PATH Variable nicht korrekt gesetzt.
-
----
-
-## bash/zsh completion
-
-Mit Linux und Mac kann die bash completion mit folgendem Befehl temporär eingerichtet werden:
-
-```
-source <(oc completion bash)
-```
-
-Oder für zsh:
-```
-source <(oc completion zsh)
-```
+If this is not the case, the PATH variable may not be set correctly.
 
 ---
 
+## bash / zsh completion
+
+With Linux and Mac, the bashkompletion can be temporarily set with the following command:
+
+`` `
+Source <(oc completion bash)
+`` `
+
+Or for zsh:
+`` `
+Source <(oc completion zsh)
+`` `
+
+---
 
 
-<p width="100px" align="right"><a href="03_first_steps.md">Erste Schritte auf der Lab Plattform →</a></p>
-[← zurück zur Übersicht] (../README.md)
+
+<P width = "100px" align = "right"> <a href="03_first_steps.md"> Getting Started on the Lab Platform → </a> </ p>
+[← back to overview] (../README.md)
