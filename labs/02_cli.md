@@ -27,39 +27,39 @@ Once the client has been downloaded, it must be placed on the system in a direct
 
 ** Linux **
 
-`` `
+``
 ~/Bin
-`` `
+``
 
 ** macOS **
 
-`` `
+``
 ~/Bin
-`` `
+``
 
 ** Windows **
 
-`` `
+``
 C:\OpenShift\
-`` `
+``
 
 ## Proper authorization on Linux and macOS
 
 The oc client must be able to run.
 
-`` `
+``
 Cd ~/bin
 chmod +x oc
-`` `
+``
 
 ## register the oc client in the PATH
 
 Under ** Linux ** and ** macOS ** the directory ~ / bin is already in the PATH, so nothing has to be done here.
 
 If the oc client has been placed in a different directory, the PATH can be set as follows:
-`` `
+``
 $ Export PATH = $PATH: [path to oc client]
-`` `
+``
 
 ### Windows
 
@@ -77,14 +77,14 @@ Place the oc client directly in the directory * C:\Windows *.
 ## Verify the installation
 
 The oc client should now be installed correctly. The best way to do this is to run the following command:
-`` `
+``
 $ Oc version
-`` `
+``
 The following output should be displayed:
-`` `
+``
 Oc v1.3.1
 Kubernetes v1.3.0+52492b4
-`` `
+``
 
 If this is not the case, the PATH variable may not be set correctly.
 
@@ -94,14 +94,14 @@ If this is not the case, the PATH variable may not be set correctly.
 
 With Linux and Mac, the bashkompletion can be temporarily set with the following command:
 
-`` `
+``
 Source <(oc completion bash)
-`` `
+``
 
 Or for zsh:
-`` `
+``
 Source <(oc completion zsh)
-`` `
+``
 
 ---
 
