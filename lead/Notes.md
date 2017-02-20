@@ -1,30 +1,30 @@
-# Instruktionen für den Lead des Techlabs
+# Instructions for the lead of Techlabs
 
-## Vorbereitung
-- [x] Lab Umgebung aufsetzen
-- [x] Acconts einrichten
-- [x] inkl. PVs
+## Preparation
+- [x] Lab environment
+- [x] Create Accounts
+- [x] including PVs
 
 
-## Ablauf
+## Procedure
 
-- 00 Einführung: Ziel des Techlabs erläutern.
-- Präsentation Überblick OpenShift
-- Lab 1: Selbststudium
-- Lab 2: Gemeinsam Step by Step durch gehen, alle Teilnehmer mitziehen
-- Lab 3: Teilnehmer Lab 3 durchgehen lassen und unterstützen
-   - Am Schluss die einzelnen Komponenten des Example Projektes erklären:
+- 00 Introduction: The goal of the Techlab.
+- Presentation Overview OpenShift
+- Lab 1: Self-study
+- Lab 2: Go through Step by Step together, take all participants with you
+- Lab 3: Participants let Lab 3 go through and support
+   - Finally explain the individual components of the example project:
       - Overview, JavaScript Graph, Route, Service, Pods, Configuration
-- Lab 4: Gemeinsam Step by Step durchgehen
-- Lab 5: Gemeinsam Step by Step durchgehen
-- Lab 6: nicht zu hoch (max 3) skalieren
-- Lab 7: Gemeinsam durchgehen, könnte auf Windows Probleme machen, am Beamer zeigen.
-- Lab 8: Gemeinsam Step by Step durchgehen, Vorsicht: korrekte URL für Pod verwenden
-- Lab 9: Gemeinsam Step by Step durchgehen
-- Lab 10: Gemeinsam Step by Step durchgehen
-- Lab 11: Gemeinsam Step by Step durchgehen
+- Lab 4: Go through step by step together
+- Lab 5: Step by Step together
+- Lab 6: do not scale too high (max 3)
+- Lab 7: Going through together could cause problems on Windows, pointing at the beamer.
+- Lab 8: Go through Step by Step together, Caution: Use correct URL for Pod
+- Lab 9: Step by Step together
+- Lab 10: Go through step by step together
+- Lab 11: Go through step by step together
 
 
-## Offene Punkte
+## Open points
 
-- [ ] Logging EFK Stack beschreiben LAB 07
+- [] Logging EFK stack describe LAB 07
