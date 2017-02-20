@@ -1,64 +1,64 @@
-# Lab 5: Unseren Service mittels Route online verfügbar machen
+# Lab 5: Make our online service available
 
-In diesem Lab werden wir die Applikation aus [Lab 4](04_deploy_dockerimage.md) über **http** vom Internet her erreichbar machen.
+In this lab we will make the application from [Lab 4] (04_deploy_dockerimage.md) accessible via ** http ** from the Internet.
 
-## Routen
+## Routes
 
-Der `oc new-app` Befehl aus dem vorherigen [Lab](04_deploy_dockerimage.md) erstellt keine Route. Somit ist unser Service von *aussen* her gar nicht erreichbar. Will man einen Service verfügbar machen, muss dafür eine Route eingerichtet werden. Der OpenShift Router erkennt aufgrund des Host Headers auf welchen Service ein Request geleitet werden muss.
+The `oc new-app` command from the previous [Lab] (04_deploy_dockerimage.md) does not create a route. Thus our service from * outside * is not accessible. If a service is to be made available, a route must be set up. The OpenShift router recognizes on the basis of the host header to which service a request must be directed.
 
-Aktuell werden folgende Protokolle unterstützt:
+The following protocols are currently supported:
 
 - HTTP
-- HTTPS ([SNI](https://en.wikipedia.org/wiki/Server_Name_Indication))
+- HTTPS ([SNI] (https://en.wikipedia.org/wiki/Server_Name_Indication))
 - WebSockets
-- TLS mit [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication)
+- TLS with [SNI] (https://en.wikipedia.org/wiki/Server_Name_Indication)
 
-## Aufgabe: LAB5.1
+## Task: LAB5.1
 
-Vergewissern Sie sich, dass Sie sich im Projekt `[USER]-dockerimage` befinden. **Tipp:** `oc project [USER]-dockerimage`
+Make sure you are in the project `` [USER] -dockerimage`. ** Tip: ** `oc project [USER] -dockerimage`
 
-Erstellen Sie für den Service `example-spring-boot` eine Route und machen Sie ihn darüber öffentlich verfügbar.
+Create a route for the `example-spring-boot` service and make it publicly available.
 
-**Tipp:** Mittels `oc get routes` können Sie sich die Routen eines Projekts anzeigen lassen.
+** Tip: ** Using `oc get routes`, you can display the routes of a project.
 
-```
-$ oc get routes
-```
+`` `
+$ Oc get routes
+`` `
 
-Aktuell gibt es noch keine Route. Jetzt brauchen wir den Servicenamen:
+Currently there is no route. Now we need the service name:
 
-```
-$ oc get services
-NAME                  CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
-example-spring-boot   172.30.124.20   <none>        8080/TCP   11m
-```
+`` `
+$ Oc get services
+NAME CLUSTER-IP EXTERNAL-IP PORT (S) AGE
+Example-spring-boot 172.30.124.20 <none> 8080 / TCP 11m
+`` `
 
-Und nun wollen wir diesen Service veröffentlichen / exposen:
+And now we want to publish / expose this service:
 
-```
-$ oc expose service example-spring-boot
-```
+`` `
+$ Oc expose service example-spring-boot
+`` `
 
-Per default wird eine http Route erstellt.
+By default, an http route is created.
 
-Mittels `oc get routes` können wir überprüfen, ob die Route angelegt wurde.
+We can use `oc get routes` to check whether the route has been created.
 
-```
-$ oc get routes
-NAME                  HOST/PORT                                   PATH      SERVICE                        TERMINATION   LABELS
-example-spring-boot   example-spring-boot-techlab.app.appuio.ch             example-spring-boot:8080-tcp                 app=example-spring-boot
-```
+`` `
+$ Oc get routes
+NAME HOST / PORT PATH SERVICE TERMINATION LABELS
+Example-spring-boot example-spring-boot-techlab.app.appuio.ch example-spring-boot: 8080-tcp app = example-spring-boot
+`` `
 
-Die Applikation ist nun vom Internet her über den angegebenen Hostnamen erreichbar, Sie können also nun auf die Applikation zugreifen.
+The application can now be accessed from the Internet using the specified hostname, so you can now access the application.
 
-**Tipp:** Wird kein Hostname angegeben wird der Standardname verwendet: *servicename-project.osecluster*
+** Tip: ** If no hostname is given, the default name is used: * servicename-project.osecluster *
 
-In der Overview der Web Console ist diese Route mit dem Hostnamen jetzt auch sichtbar.
+This route with the hostname is now also visible in the web console's overview.
 
 
 ---
 
-**Ende Lab 5**
+** End Lab 5 **
 
-<p width="100px" align="right"><a href="06_scale.md">Skalieren →</a></p>
-[← zurück zur Übersicht] (../README.md)
+<P width = "100px" align = "right"> <a href="06_scale.md"> Scaling → </a> </ p>
+[← back to overview] (../README.md)
