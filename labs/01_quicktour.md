@@ -1,93 +1,93 @@
-# Lab 1: Quicktour durch OpenShift V3
+# Lab 1: Quicktour through OpenShift V3
 
-In diesem Lab werden die Grundkonzepte von OpenShift vorgestellt. Des Weiteren zeigen wir auf, wie man sich in der Web Console einloggt und stellen die einzelnen Bereiche kurz vor.
+In this lab the basic concepts of OpenShift are presented. We also show you how to log in to the web console and briefly present the individual areas.
 
-Die hier aufgeführten Begriffe und Ressourcen sind ein Auszug aus der offiziellen OpenShift Dokumentation, weiterführende Informationen zu OpenShift können hier entnommen werden:
+The terms and resources listed here are an excerpt from the official OpenShift documentation, further information about OpenShift can be found here:
 
-> https://docs.openshift.com/container-platform/3.3/architecture/index.html
+> Https://docs.openshift.com/container-platform/3.3/architecture/index.html
 
 
-## Grundkonzepte
+## Basic concepts
 
-OpenShift V3 basiert auf modernen Open Source Konzepten wie Docker und Kubernetes und bietet damit eine Plattform, mit der Software in Containern gebuildet, deployt und betrieben werden kann. OpenShift V3 kann als Container Platform oder Platform as a Service (PaaS) bezeichnet werden.
+OpenShift V3 is based on modern Open Source concepts such as Docker and Kubernetes, providing a platform that can be used to build, deploy, and operate software in containers. OpenShift V3 can be called Container Platform or Platform as a Service (PaaS).
 
 ### Docker
 
-[Docker](https://www.docker.com/) ist die offene Plattform für Entwickler und Sysadmins und ihre Applikationen. Wählen Sie das für Ihre Technologie passende Basis-Docker-Images aus, OpenShift baut für Sie nach jedem Build automatisch einen aktualisierten Docker-Container und deployt ihn auf Wunsch auch gleich.
+[Docker] (https://www.docker.com/) is the open platform for developers and sysadmins and their applications. Choose the base docker images that match your technology, and OpenShift automatically builds an updated Docker container after you build it, and deploy it as you want.
 
 ### Kubernetes
 
-Container orchestrieren und managen mit [Kubernetes](http://kubernetes.io/) von Google. Sie definieren, wie viele Instanzen Ihrer Applikation parallel laufen sollen und Kubernetes kümmert sich um die Skalierung, das Loadbalancing und die Stabilität.
+Containers orchestrate and manage with [Kubernetes] (http://kubernetes.io/) by Google. You define how many instances of your application should run in parallel, and Kubernetes takes care of the scaling, load balancing and stability.
 
-## Übersicht
+## Overview
 
-![Overview](../images/ose3-overview.png)
+! [Overview] (../ images / ose3-overview.png)
 
-### Container und Docker Images
+### Container and Docker Images
 
-Die Basiselemente von OpenShift Applikationen sind Docker Container. Mit Docker Container können Prozesse auf einem Linuxsystem so isoliert werden, dass sie nur mit den definierten Ressourcen interagieren können. So können viele unterschiedliche Container auf dem gleichen System laufen, ohne dass sie einander "sehen" (Files, Prozesse, Netzwerk). Typischerweise beinhaltet ein Container einen einzelnen Service (Webserver, Datenbank, Mailservice, Cache). Innerhalb eines Docker Containers können beliebige Prozesse ausgeführt werden.
+The basic elements of OpenShift applications are docker containers. With DockerContainer, processes on a Linux system can be isolated so that they can only interact with the defined resources. This allows many different containers to run on the same system without seeing each other (files, processes, network). Typically, a container contains a single service (web server, database, mail service, cache). Within a Docker container, any processes can be executed.
 
-Docker Container basieren auf Docker Images. Ein Docker Image ist eine binary Datei, die alle nötigen Komponenten beinhaltet, damit ein einzelner Container ausgeführt werden kann.
+Docker containers are based on Docker Images. A docker image is a binary file that contains all the necessary components to run a single container.
 
-Docker Images werden anhand von DockerFiles (textueller Beschrieb wie das Docker Image Schritt für Schritt aufgebaut ist) gebuildet. Grundsätzlich sind Docker Images hierarchisch angewendete Filesystem Snapshots.
+Docker images are created by DockerFiles (textual description of how the Docker Image is built step by step). Basically, Docker Images are hierarchically applied file system snapshots.
 
-**Beispiel Tomcat**
-- Basis Image (CentOs 7)
+** Example Tomcat **
+- Basic Image (CentOs 7)
 - + Install Java
 - + Install Tomcat
 - + Install App
 
-Die gebuildeten Docker Images werden in der OpenShift internen Docker Registry versioniert abgelegt und stehen der Plattform nach dem Build zum Deployment zur Verfügung.
+The docker images are stored versioned in the OpenShift internal Docker Registry and are available to the platform for deployment after the build.
 
-### Projekte
+### Projects
 
-In OpenShift V3 werden Ressourcen (Container und Docker Images, Pods, Services, Routen, Konfiguration, Quotas und Limiten etc.) in Projekten strukturiert. Aus technischer Sicht entspricht ein Projekt einem Kubernetes Namespace und erweitert diesen um gewisse Konzepte.
+In OpenShift V3, resources (containers and docker images, pods, services, routes, configuration, quotas and limits etc.) are structured in projects. From a technical point of view, a project corresponds to a Kubernetes namespace and extends these concepts with certain concepts.
 
-Innerhalb eines Projekts können berechtigte User ihre Ressourcen selber verwalten und organisieren.
+Within a project, authorized users can manage and organize their own resources.
 
-Die Ressourcen innerhalb eines Projektes sind über ein transparentes [SDN](https://de.wikipedia.org/wiki/Software-defined_networking) verbunden. So können die einzelnen Komponenten eines Projektes in einem Multi-Node Setup auf verschiedene Nodes deployed werden. Dabei sind sie über das SDN untereinander sicht- und zugreifbar.
+The resources within a project are linked via a transparent [SDN] (https://de.wikipedia.org/wiki/Software-defined_networking). This allows the individual components of a project to be deployed to different nodes in a multi-node setup. They are visible and accessible via the SDN.
 
 ### Pods
 
-OpenShift übernimmt das Konzept der Pods von Kubernetes.
+OpenShift assumes the concept of the pods of Kubernetes.
 
-Ein Pod ist ein oder mehrere Container, die zusammen auf den gleichen Host deployed werden. Ein Pod ist die kleinste zu deployende Einheit auf OpenShift.
+A pod is one or more containers that are deployed together on the same host. A pod is the smallest unit to deploy on OpenShift.
 
-Ein Pod ist innerhalb eines OpenShift Projektes über den entsprechenden Service verfügbar.
+A pod is available within an OpenShift project via the appropriate service.
 
 ### Services
 
-Ein Service repräsentiert einen internen Loadbalancer auf die dahinterliegenden Pods (Replicas vom gleichen Typ). Der Service dient als Proxy zu den Pods und leitet Anfragen an diese weiter. So können Pods willkürlich einem Service hinzugefügt und entfernt werden, während der Service verfügbar bleibt.
+A service represents an internal loadbalancer on the pods behind it (replicas of the same type). The service serves as a proxy to the pods and forwards requests to them. This allows pods to be arbitrarily added to and removed from a service while the service remains available.
 
-Einem Service ist innerhalb eines Projektes eine IP und ein Port zugewiesen und verteilt Requests entsprechend auf die Pod Replicas.
+A service is assigned an IP and a port within a project and distributes requests accordingly to the pod replicas.
 
-### Routen
+### Routes
 
-Mit einer Route definiert man in OpenShift, wie ein Service von ausserhalb von OpenShift von externen Clients erreicht werden kann.
+With a route you define in OpenShift, how a service from outside of OpenShift can be achieved by external clients.
 
-Diese Routen werden im integrierten Routing Layer eingetragen und erlauben dann der Plattform über ein Hostname-Mapping die Requests an den entsprechenden Service weiterzuleiten.
+These routes are entered in the integrated routing layer and then allow the platform to forward the requests to the relevant service via a hostname mapping.
 
-Sind mehr als ein Pod für einen Service deployt, verteilt der Routing Layer die Requests auf die deployten Pods
+If more than one pod is deployed for a service, the routing layer distributes the requests to the deployed pods
 
-Aktuell werden folgende Protokolle unterstützt:
+The following protocols are currently supported:
 
 - HTTP
-- HTTPS ([SNI](https://en.wikipedia.org/wiki/Server_Name_Indication))
+- HTTPS ([SNI] (https://en.wikipedia.org/wiki/Server_Name_Indication))
 - WebSockets
-- TLS mit [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication)
+- TLS with [SNI] (https://en.wikipedia.org/wiki/Server_Name_Indication)
 
 ### Templates
 
-Ein Template beschreibt textuell eine Liste von Ressourcen, die auf OpenShift ausgeführt und entsprechend in OpenShift erstellt werden können.
+A template describes textually a list of resources that can be executed on OpenShift and created accordingly in OpenShift.
 
-So hat man die Möglichkeit ganze Infrastrukturen zu beschreiben:
+This way you have the possibility to describe entire infrastructures:
 
-- Java Applikation Service (3 Replicas, rolling Upgrade)
-- Datenbank Service
-- über Route https://java.app.appuio-beta.ch im Internet verfügbar
+- Java Application Service (3 Replicas, rolling Upgrade)
+- Database service
+- via the route https://java.app.appuio-beta.ch available on the Internet
 
 ---
 
-**Ende Lab 1**
-<p width="100px" align="right"><a href="02_cli.md">OpenShift CLI installieren →</a></p>
-[← zurück zur Übersicht] (../README.md)
+** End Lab 1 **
+<P width = "100px" align = "right"> <a href="02_cli.md"> Install OpenShift CLI → </a> </ p>
+[← back to overview] (../README.md)
