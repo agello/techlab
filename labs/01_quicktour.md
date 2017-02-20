@@ -17,7 +17,7 @@ OpenShift V3 is based on modern Open Source concepts such as Docker and Kubernet
 
 ### Kubernetes
 
-Containers orchestrate and manage with [Kubernetes] (http://kubernetes.io/) by Google. You define how many instances of your application should run in parallel, and Kubernetes takes care of the scaling, load balancing and stability.
+Orchestrate and manage containers with [Kubernetes] (http://kubernetes.io/) by Google. You define how many instances of your application should run in parallel, and Kubernetes takes care of the scaling, load balancing and stability.
 
 ## Overview
 
@@ -25,11 +25,11 @@ Containers orchestrate and manage with [Kubernetes] (http://kubernetes.io/) by G
 
 ### Container and Docker Images
 
-The basic elements of OpenShift applications are docker containers. With DockerContainer, processes on a Linux system can be isolated so that they can only interact with the defined resources. This allows many different containers to run on the same system without seeing each other (files, processes, network). Typically, a container contains a single service (web server, database, mail service, cache). Within a Docker container, any processes can be executed.
+The basic elements of OpenShift applications are docker containers. With docker containers, processes on a Linux system can be isolated so that they can only interact with the defined resources. This allows many different containers to run on the same system without seeing each other (files, processes, network). Typically, a container contains a single service (web server, database, mail service, cache). Within a Docker container, any processes can be executed.
 
-Docker containers are based on Docker Images. A docker image is a binary file that contains all the necessary components to run a single container.
+Docker containers are based on docker images. A docker image is a binary file that contains all the necessary components to run a single container.
 
-Docker images are created by DockerFiles (textual description of how the Docker Image is built step by step). Basically, Docker Images are hierarchically applied file system snapshots.
+Docker images are created by dockerfiles (textual description of how the docker image is built step by step). Basically, docker images are hierarchically applied file system snapshots.
 
 ** Example Tomcat **
 - Basic Image (CentOs 7)
@@ -37,7 +37,7 @@ Docker images are created by DockerFiles (textual description of how the Docker 
 - + Install Tomcat
 - + Install App
 
-The docker images are stored versioned in the OpenShift internal Docker Registry and are available to the platform for deployment after the build.
+The docker images are stored in version control in the OpenShift internal Docker Registry and are available to the platform for deployment after the build.
 
 ### Projects
 
@@ -49,7 +49,7 @@ The resources within a project are linked via a transparent [SDN] (https://de.wi
 
 ### Pods
 
-OpenShift assumes the concept of the pods of Kubernetes.
+OpenShift uses the concept of pods.
 
 A pod is one or more containers that are deployed together on the same host. A pod is the smallest unit to deploy on OpenShift.
 
@@ -63,9 +63,9 @@ A service is assigned an IP and a port within a project and distributes requests
 
 ### Routes
 
-With a route you define in OpenShift, how a service from outside of OpenShift can be achieved by external clients.
+With a route you define how a service can be accessed by external clients.
 
-These routes are entered in the integrated routing layer and then allow the platform to forward the requests to the relevant service via a hostname mapping.
+These routes are entered in the routing layer and then allow the platform to forward the requests to the relevant service via hostname mapping.
 
 If more than one pod is deployed for a service, the routing layer distributes the requests to the deployed pods
 
@@ -78,7 +78,7 @@ The following protocols are currently supported:
 
 ### Templates
 
-A template describes textually a list of resources that can be executed on OpenShift and created accordingly in OpenShift.
+A template describes a list of resources that can be executed on OpenShift and created accordingly in OpenShift.
 
 This way you have the possibility to describe entire infrastructures:
 
