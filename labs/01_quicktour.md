@@ -1,6 +1,6 @@
 # Lab 1: Quicktour through OpenShift V3
 
-In this lab the basic concepts of OpenShift are presented. We also show you how to log in to the web console and briefly present the individual areas.
+In this lab the basic concepts of OpenShift are presented. We will also show you how to log in to the web console and briefly present the individual areas.
 
 The terms and resources listed here are an excerpt from the official OpenShift documentation, further information about OpenShift can be found here:
 
