@@ -1,17 +1,17 @@
-# OpenShift V3 Techlab Einführung
+# OpenShift V3 Techlab Introduction
 
-Mit einer Platform as a Service (PaaS) ändert sich die Art, wie wir Software entwickeln. Puzzle stellt OpenShift V3 – die *Container Platform* von Red Hat – in einem Tech Lab vor. Entwickler lernen dabei hands-on die wichtigsten Schritte, wie eine Applikation in die Cloud gebracht wird.
+With a Platform as a Service (PaaS), the way we evolve software changes. Puzzle introduces OpenShift V3 - the * Container Platform * from Red Hat - in a Tech Lab. Developers learn hand-on the most important steps in how an application is brought into the cloud.
 
-**Ziel des Techlabs**
-- Gemeinsam den Einstieg in eine neue moderne Technologie erreichen
-- Grundkonzepte verstehen
-- Erste Applikation auf OpenShift deployed
+** Objective of Techlabs **
+- Achieve a joint venture with a new modern technology
+- Understanding basic concepts
+- First application deployed on OpenShift
 
-## Kurze Techlab Einführung als Slidedeck
+## Short Techlab Introduction as Slidedeck
 
-* https://speakerdeck.com/appuio/appuio-openshift-techlab-overview
+* Https://speakerdeck.com/appuio/appuio-openshift-techlab-overview
 
 ---
 
-<p width="100px" align="right"><a href="01_quicktour.md">Quicktour durch OpenShift V3 →</a></p>
-[← zurück zur Übersicht] (../README.md)
+<P width = "100px" align = "right"> <a href="01_quicktour.md"> Quicktour through OpenShift V3 → </a> </ p>
+[← back to overview] (../README.md)
