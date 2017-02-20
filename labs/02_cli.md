@@ -1,6 +1,6 @@
 # Lab 2: Installing OpenShift CLI
 
-In this lab, we will jointly install and configure the oc client so that we can then take the first steps on the OpenShift Techlab platform.
+In this lab, we will install and configure the oc client so that we can then take the first steps on the OpenShift Techlab platform.
 
 ## Command Line Interface
 
