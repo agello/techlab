@@ -1,75 +1,75 @@
-# OpenShift Entwicklungsumgebung
+# OpenShift development environment
 
-Diese Seite zeigt verschiedene Möglichkeiten, wie selbst entwickelte Docker Container oder OpenShift Templates etc. getestet werden können, ohne auf eine vollständige, produktive OpenShift-Plattform wie bspw. APPUiO Zugriff zu haben.
+This page shows different possibilities for self-developed Dockercontainer or OpenShift Templates etc. can be tested without having access to a complete, productive OpenShift platform such as APPUiO.
 
 ## oc cluster up
 
-Seit Version 1.3 des OpenShift Clients "oc" existiert die Möglichkeit, ein OpenShift lokal auf dem eigenen Laptop zu starten. Hierfür wird ein Docker Container heruntergeladen, der eine OpenShift-Installation beinhaltet, und anschliessend gestartet.
+Since version 1.3 of the OpenShift client "oc" exists the possibility to start an OpenShift locally on its own laptop. To do this, a docker container containing an OpenShift installation is downloaded and then started.
 
-Voraussetzungen:
-* oc 1.3+
+Requirements:
+* Oc 1.3+
 * Docker 1.10
 
-Sind die Voraussetzung erfüllt und Docker gestartet, kann mit folgendem Befehl die OpenShift-Umgebung gestartet werden:
-```
-$ oc cluster up
-```
+If the prerequisite is fulfilled and Docker is started, the OpenShift environment can be started with the following command:
+`` `
+$ Oc cluster up
+`` `
 
-### Dokumentation und Troubleshooting
+### Documentation and Troubleshooting
 
 #### iptables
-Eine häufige Fehlerquelle ist die lokale Firewall. Docker verwendet iptables, um den Containern den Zugriff ins Internet zu gewährleisten. Es kann dabei vorkommen, dass sich bestimmte Rules in die Quere kommen. Häufig hilft ein Flushen der iptables Rulechains, nachdem die OpenShift-Instanz mit einem `oc cluster down` heruntergefahren wurde:
-```
-$ iptables -F
-```
-Anschliessend kann nochmals ein `oc cluster up` versucht werden.
+A common source of error is the local firewall. Docker uses iptables to allow the containers to access the Internet. It can happen that certain rules get in the way. Often, the iptables rulechains are flushed after the OpenShift instance has been down-loaded with an `oc cluster down`:
+`` `
+$ Iptables -F
+`` `
+Then you can try again a `oc cluster up`.
 
-#### Dokumentation
+#### Documentation
 
-Die vollständige Dokumentation befindet sich unter https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md.
+The complete documentation is available at https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md.
 
 #### Ubuntu 16.04
 
-Der Setup für Ubuntu 16.04 gestaltet sich ein wenig anders, als dies auf Fedora, CentOS oder RHEL der Fall ist, da der Registry Zugriff anders konfiguriert werden muss.
+The setup for Ubuntu 16.04 is a little different than Fedora, CentOS or RHEL, because the registry access has to be configured differently.
 
-1. Docker installieren.
-2. Docker Daemon für eine unsichere Docker Registry konfigurieren.
-   - Dazu die Datei `/etc/docker/daemon.json` mit folgendem Inhalt erstellen:
-     ```
+1. Install Docker.
+2. Configure Docker Daemon for an insecure Docker Registry.
+   - To do this, create the file `/ etc / docker / daemon.json` with the following content:
+     `` `
      {
-       "insecure-registries": ["172.30.0.0/16"]
+       "Insecure-registries": ["172.30.0.0/16"]
      }
-     ```
+     `` `
 
-   - Nach dem Erstellen der Konfiguration den Docker Daemon neu starten.
-     ```
-     $ sudo systemctl restart docker
-     ```
+   - Restart the docker daemon after creating the configuration.
+     `` `
+     $ Sudo systemctl restart docker
+     `` `
 
-3. oc installieren
+3. Install oc
 
-   Anleitung im Lab [OpenShift CLI installieren](labs/02_cli.md) befolgen.
+   Instructions in Lab [Install OpenShift CLI] (labs / 02_cli.md).
 
-4. Terminal öffnen und mit einem auf Docker berechtigten Benutzer diesen Befehl ausführen:
-   ```
-   $ oc cluster up
-   ```
+4. Open the terminal and execute this command with a user authorized on Docker:
+   `` `
+   $ Oc cluster up
+   `` `
 
-Cluster stoppen:
-```
-$ oc cluster down
-```
+Stop Cluster:
+`` `
+$ Oc cluster down
+`` `
 
 ## Vagrant
 
-Mit dem [Puppet Modul für OpenShift 3](https://github.com/puzzle/puppet-openshift3/tree/dev) ist die Installation der Plattform in Vagrant automatisiert. Dieses Puppet Modul wird für die Installation und Aktualisierung produktiver Instanzen verwendet.
+The [Puppet Module for OpenShift 3] (https://github.com/puzzle/puppet-openshift3/tree/dev) automates the installation of the platform in Vagrant. This Puppet Module is used to install and update productive instances.
 
-## Weitere Möglichkeiten
+## More options
 
-Ein [Blogpost von Red Hat](https://developers.redhat.com/blog/2016/10/11/four-creative-ways-to-create-an-openshiftkubernetes-dev-environment/) beschreibt neben `oc cluster up` noch weitere Varianten, wie eine lokale Entwicklungsumgebung aufgesetzt werden kann.
+A [Blogpost of Red Hat] (https://developers.redhat.com/blog/2016/10/11/four-creative-ways-to-create-an-openshiftkubernetes-dev-environment/) describes next to `oc cluster Up 'further variants of how a local development environment can be set up.
 
 ---
 
-**Ende **
+**The End **
 
-[<< zurück zur Übersicht] (../README.md)
+[<< back to overview] (../README.md)
