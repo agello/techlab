@@ -20,6 +20,7 @@ $ oc new-project [USER]-dockerimage
 `oc new-project` will automatically switch to the newly created project. The `oc get` command can display resources of a particular type.
 
 use
+
 ``
 $ oc get project
 ``
@@ -116,7 +117,7 @@ As you can see on the output, our service (example-spring-boot) is accessible vi
 Use the following command to read additional information about the service:
 
 ``
-$ Oc get service example-spring-boot -o json
+$ oc get service example-spring-boot -o json
 ``
 
 ```
