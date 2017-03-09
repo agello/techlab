@@ -57,7 +57,7 @@ chmod +x oc
 
 ## register the oc client in the PATH
 
-Under ** Linux ** and ** macOS ** the directory ~ / bin is already in the PATH, so nothing has to be done here.
+Under **Linux** and ** macOS ** the directory ~/bin is already in the PATH, so nothing has to be done here.
 
 If the oc client has been placed in a different directory, the PATH can be set as follows:
 
