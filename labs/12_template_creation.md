@@ -83,8 +83,8 @@ Currently, there is an open [Issue](https://github.com/openshift/origin/issues/8
 
 ```
 $ oc export is, bc, pvc, dc, route, service --as-template=my-template -o json |
-  jq '(.objects [] | select (.kind == "ImageStream") | .spec) | = \
-    (.dockerImageRepository = .tags [0] .annotations ["openshift.io/imported-from"]) '> my-template.json
+  jq '(.objects[] | select (.kind == "ImageStream") | .spec) | = \
+    (.dockerImageRepository= .tags[0] .annotations ["openshift.io/imported-from"]) '> my-template.json
 ```
 
 Attributes with value `null` and the annotation` openshift.io/generated-by` may be removed from the template.
