@@ -18,8 +18,8 @@ In the second step, the previously created PVC is integrated into the correct po
 The following command executes both the steps described at the same time, so it first creates the claim and then binds it as a volume in the pod:
 
 ```
-$ oc volume dc/mysql --add --name=mysql -data --type pvc \
-     --claim-name = mysqlpvc --claim-size = 256Mi --overwrite
+$ oc volume dc/mysql --add --name=mysql-data --type pvc \
+     --claim-name=mysqlpvc --claim-size=256Mi --overwrite
 ```
 **Note:** The modified Deployment Config will automatically deploy a new pod to OpenShift. This means, unfortunately, that the previously created DB schema and already inserted data have been lost.
 
@@ -42,7 +42,7 @@ The two status and volume attributes tell us that our claim was linked to Persis
 
 With the following command, we can also check whether the volume has been integrated into the Deployment Config:
 ```
-$ oc volume dc / mysql
+$ oc volume dc/mysql
 Deploymentconfigs / mysql
   Pvc / mysqlpvc (allocated 256MiB) as mysql-data
 ```
