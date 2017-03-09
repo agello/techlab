@@ -22,9 +22,10 @@ Create a new project on the lab platform.
 > How can I create a new project?
 
 ** Tip **: information_source:
-`` `
-$ Oc help
-`` `
+
+``
+$ oc help
+``
 
 ## Web Console
 
@@ -40,12 +41,15 @@ The OpenShift V3 Web Console allows users to perform certain tasks directly via 
 1. Add your first application to your project using * Add to Project *. As an example project, we use an APPUiO Example.
 
   3.1. Select the base image ** php 5.6 **
+  
 ! [Php5.6] (../ images / lab_3_php5.6.png)
 
   3.2. Give your example a speaking name and the following URL as Repo URL
-  `` `
+  
+  ``
   Https://github.com/appuio/example-php-sti-helloworld.git
-  `` `
+  ``
+  
 ! [Php5.6] (../ images / lab_3_example1.png)
 
 1. The application has been created. The link ** Continue to overview ** gives you an overview.
@@ -58,35 +62,40 @@ The OpenShift V3 Web Console allows users to perform certain tasks directly via 
 You have now deployed your first application using the so-called ** [Source to Image] ** build on OpenShift deployed .
 
 ** Tip: ** Use the following command to switch to another project:
-`` `
-$ Oc project [projectname]
-`` `
+
+``
+$ oc project [projectname]
+``
 
 ** Tip: ** The following commands can be used to create the above example from the command line:
-`` `
-$ Oc new-app https://github.com/appuio/example-php-sti-helloworld.git --name = appuio-php-sti-example
-$ Oc expose svc appuio-php-sti-example
-`` `
+
+``
+$ oc new-app https://github.com/appuio/example-php-sti-helloworld.git --name = appuio-php-sti-example
+$ oc expose svc appuio-php-sti-example
+``
 
 ** Tip: ** a whole app can be deleted with the following command:
-`` `
-$ Oc delete all -l app = appname
-`` `
+
+``
+$ oc delete all -l app = appname
+``
+
 For example,
-`` `
-$ Oc delete all -l app = appuio-php-sti-example
-`` `
+
+``
+$ oc delete all -l app = appuio-php-sti-example
+``
 
 ---
 
 ## Solution: LAB3.1
 
-`` `
+``
 $ Oc new-project [USER] -example1
-`` `
+``
 ---
 
 ** End Lab 3 **
 
-<P width = "100px" align = "right"> <a href="04_deploy_dockerimage.md"> Deploying a Docker Image → </a> </ p>
+<p width = "100px" align = "right"> <a href="04_deploy_dockerimage.md"> Deploying a Docker Image → </a> </ p>
 [← back to overview] (../README.md)
