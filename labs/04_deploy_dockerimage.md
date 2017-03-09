@@ -114,6 +114,7 @@ As you can see on the output, our service (example-spring-boot) is accessible vi
 **Note:** Service IPs remain the same for their lifetime.
 
 Use the following command to read additional information about the service:
+
 ``
 $ Oc get service example-spring-boot -o json
 ``
@@ -161,6 +162,7 @@ $ Oc get service example-spring-boot -o json
 ``
 
 You can also use the corresponding command to display the details of a pod:
+
 ``
 $ oc get pod example-spring-boot-3-nwzku -o json
 ``
@@ -168,7 +170,7 @@ $ oc get pod example-spring-boot-3-nwzku -o json
 **Note:** First, query the pod name from your project (`oc get pods`) and replace it in the upper command.
 
 The `selector` area in the service defines which pods (` labels`) are used as endpoints. To do so, consider the corresponding configurations of the service and pod together.
-``
+```
 Service:
 --------
 ...
@@ -189,14 +191,14 @@ Reply with quote
 },
 ...
 
-``
+```
 
 This link can be viewed using the `oc describe` command:
-``
+```
 $ oc describe service example-spring-boat
-``
+```
 
-``
+```
 Name: example-spring-boot
 Namespace: techlab
 Labels: app = example-spring-boot
@@ -207,7 +209,7 @@ Port: 8080-tcp 8080 / TCP
 Endpoints: 10.1.3.20:8080
 Session Affinity: None
 No events.
-``
+```
 
 Under Endpoints, you will now find the currently running pod.
 
@@ -236,6 +238,7 @@ The following points are defined in [DeploymentConfig] (https://docs.openshift.c
 
 
 The following command can be used to read additional information about DeploymentConfig:
+
 ``
 $ oc get deploymentConfig example-spring-boot -o json
 ``
