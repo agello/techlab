@@ -156,14 +156,14 @@ This definition would generate a random, 13-character password with small and up
 Even if a parameter is configured with Generate Definition, it can be overwritten during generation.
 
 ### Template Merge
-For example, if an app is used together with a database, the two templates can be merged. It is important to consolidate the template parameters. These are usually values ​​for the connection of the database. Simply use the same variable from the common parameter in both templates.
+For example, if an app is used together with a database, the two templates can be merged. It is important to consolidate the template parameters. These are usually values for the connection of the database. Simply use the same variable from the common parameter in both templates.
 
 ## Apply from templates
-Templates can be instantiated using `oc new-app -f <FILE> | <URL> -p <PARAM1> = <VALUE1>, <PARAM2> = <VALUE2> ...`.
+Templates can be instantiated using `oc new-app -f <FILE> | <URL> -p <PARAM1>=<VALUE1>, <PARAM2>=<VALUE2> ...`.
 If the parameters of the template have already been set with `oc process`, it is no longer necessary to specify the parameters.
 
 ### Metadata / Labels
-`oc new-app` inserts the label` app=<TEMPLATE NAME> `into all instanced resources by default. For some versions of OpenShift, this can lead to [invalid](https://github.com/openshift/origin/issues/10782) resource definitions.
+`oc new-app` inserts the label `app=<TEMPLATE NAME> `into all instanced resources by default. For some versions of OpenShift, this can lead to [invalid](https://github.com/openshift/origin/issues/10782) resource definitions.
 As a workaround, an alternative label can be configured with `oc new-app -l <LABELNAME>=<LABELVALUE> ...`.
 
 ## Create resources from docker-compose.yml
