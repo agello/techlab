@@ -98,7 +98,7 @@ If this is not the case, the PATH variable may not be set correctly.
 
 ## bash / zsh completion
 
-With Linux and Mac, the bashkompletion can be temporarily set with the following command:
+With Linux and Mac, the bashcompletion can be temporarily set with the following command:
 
 ``
 source <(oc completion bash)
