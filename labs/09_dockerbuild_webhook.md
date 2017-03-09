@@ -1,7 +1,4 @@
-Google Translate
-Original text
-Gehen Sie auf die [GitHub Projekt-Seite](https://github.com/appuio/example-php-docker-helloworld) und [forken](https://help.github.com/articles/fork-a-repo/) Sie das Projekt.
-Contribute a better translation
+
 # Lab 9: Codechanges by webhook triggering rebuild on OpenShift
 
 In this lab, we'll show you the Docker Build Workflow by example, and you'll learn how to push a build and deploy the application to OpenShift with a push into the Git repository.
