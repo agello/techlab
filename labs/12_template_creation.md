@@ -99,7 +99,7 @@ $ oc get templates -n openshift
 
 So we get a copy of the eap70-mysql-persistent-s2i template:
 ```
-$ oc exporttemplate eap70-mysql-persistent-s2i -o json -n openshift> eap70-mysql-persistent-s2i.json
+$ oc export template eap70-mysql-persistent-s2i -o json -n openshift> eap70-mysql-persistent-s2i.json
 ```
 
 ## Parameters
