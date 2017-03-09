@@ -15,7 +15,7 @@ The following protocols are currently supported:
 
 ## Task: LAB5.1
 
-Make sure you are in the project ` [USER] -dockerimage`. **Tip:** `oc project [USER] -dockerimage`
+Make sure you are in the project `[USER]-dockerimage`. **Tip:** `oc project [USER]-dockerimage`
 
 Create a route for the `example-spring-boot` service and make it publicly available.
 
@@ -45,8 +45,8 @@ We can use `oc get routes` to check whether the route has been created.
 
 ```
 $ oc get routes
-NAME HOST / PORT PATH SERVICE TERMINATION LABELS
-Example-spring-boot example-spring-boot-techlab.app.appuio.ch example-spring-boot: 8080-tcp app = example-spring-boot
+NAME HOST/PORT PATH SERVICE TERMINATION LABELS
+Example-spring-boot example-spring-boot-techlab.app.appuio.ch example-spring-boot: 8080-tcp app=example-spring-boot
 ```
 
 The application can now be accessed from the Internet using the specified hostname, so you can now access the application.
@@ -58,7 +58,7 @@ This route with the hostname is now also visible in the web console's overview.
 
 ---
 
-** End Lab 5 **
+**End Lab 5**
 
 <p width = "100px" align = "right"> <a href="06_scale.md"> Scaling → </a> </p>
 [← back to overview] (../README.md)
