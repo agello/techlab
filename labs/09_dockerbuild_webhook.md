@@ -16,9 +16,9 @@ In order to make changes to the source code of our example application, you need
 
 **Sample project:** https://github.com/appuio/example-php-docker-helloworld
 
-Go to the [GitHub Project page] (https://github.com/appuio/example-php-docker-helloworld) and [forken] (https://help.github.com/articles/fork-a- Repo /) you the project.
+Go to the [GitHub Project page] (https://github.com/appuio/example-php-docker-helloworld) and [fork] (https://help.github.com/articles/fork-a-repo/) the project.
 
-![Fork](../ images / lab_9_fork_example.png)
+![Fork](../images/lab_9_fork_example.png)
 
 
 You have now
