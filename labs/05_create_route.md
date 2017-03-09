@@ -44,7 +44,7 @@ By default, an http route is created.
 We can use `oc get routes` to check whether the route has been created.
 
 ```
-$ Oc get routes
+$ oc get routes
 NAME HOST / PORT PATH SERVICE TERMINATION LABELS
 Example-spring-boot example-spring-boot-techlab.app.appuio.ch example-spring-boot: 8080-tcp app = example-spring-boot
 ```
@@ -60,5 +60,5 @@ This route with the hostname is now also visible in the web console's overview.
 
 ** End Lab 5 **
 
-<P width = "100px" align = "right"> <a href="06_scale.md"> Scaling → </a> </ p>
+<p width = "100px" align = "right"> <a href="06_scale.md"> Scaling → </a> </p>
 [← back to overview] (../README.md)
