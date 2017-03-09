@@ -4,7 +4,9 @@ In this lab, we will be interacting with the Lab platform for the first time, vi
 
 ## Login
 
-** Note: ** Make sure you have successfully completed [Lab 2] (02_cli.md).
+** Note: ** 
+Make sure you have successfully completed [Lab 2] (02_cli.md).
+
 
 Please use the information provided by the instructor for the login on the web interface as well as with `oc`.
 
