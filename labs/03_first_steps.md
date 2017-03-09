@@ -93,8 +93,9 @@ $ oc delete all -l app = appuio-php-sti-example
 ## Solution: LAB3.1
 
 ``
-$ Oc new-project [USER] -example1
+$ oc new-project [USER] -example1
 ``
+
 ---
 
 **End Lab 3**
