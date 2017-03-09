@@ -199,7 +199,7 @@ $ mysql -u $ MYSQL_USER -p $ MYSQL_PASSWORD -h $ MYSQL_SERVICE_HOST appuio </tmp
 **Note:** The dump can be created as follows:
 
 ```
-mysqldump --user = $ MYSQL_USER --password = $ MYSQL_PASSWORD --host = $ MYSQL_SERVICE_HOST appuio> /tmp/dump.sql
+mysqldump --user=$MYSQL_USER --password=$MYSQL_PASSWORD --host=$MYSQL_SERVICE_HOST appuio > /tmp/dump.sql
 ```
 
 
