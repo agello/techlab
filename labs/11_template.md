@@ -10,12 +10,12 @@ This is error-prone and is not suitable for automating.
 
 OpenShift offers the concept of templates in which you can describe a list of resources that can be parameterized. So you are almost a recipe for a whole infrastructure (for example, 3 application containers, a database with Persistent Storage)
 
-** Note: ** Clusteradmin can create global templates, which are available to all users.
+**Note:** Clusteradmin can create global templates, which are available to all users.
 
 View all existing templates
-`` `
-$ Oc get template -n openshift
-`` `
+```
+$ oc get template -n openshift
+```
 
 Using the Web Console, this can be done via "Add to Project". This functionality allows templates to be directly instantiated.
 
@@ -25,20 +25,20 @@ These templates can be stored in Jons format in the Git repository next to their
 
 The individual steps we have done manually in the previous labs can now be carried out using a template in a "slide".
 
-`` `
-$ Oc new-project [USER] -template
-`` `
+```
+$ oc new-project [USER]-template
+```
 
 Create template
 
-`` `
-$ Oc create -f https://raw.githubusercontent.com/appuio/example-spring-boot-helloworld/master/example-spring-boot-template.json
-`` `
+```
+$ oc create -f https://raw.githubusercontent.com/appuio/example-spring-boot-helloworld/master/example-spring-boot-template.json
+```
 
-Template (Replace `[project]` with `[USER] -template`)
+Template (Replace `[project]` with `[USER]-template`)
 
-`` `
-$ Oc new-app example-spring-boot
+```
+$ oc new-app example-spring-boot
 
 -> Deploying template example-spring-boot for "example-spring-boot"
      With parameters:
@@ -58,29 +58,30 @@ $ Oc new-app example-spring-boot
 -> Success
     Run 'oc status' to view your app.
 
-`` `
+```
 
 By means of:
-`` `
-Oc deploy example-spring-boot --latest
-`` `
+```
+oc deploy example-spring-boot --latest
+```
 
 OpenShift then starts a build and deployes the containers as specified in the template.
 
-** Tip: ** You could also process templates directly by calling a template directly `$ oc new-app -f template.json -p Param = value`
+**Tip:** You could also process templates directly by calling a template directly `$ oc new-app -f template.json -p Param=value`
 
 To conclude this lab you can still see the template
-`` `
-Https://github.com/appuio/example-spring-boot-helloworld/blob/master/example-spring-boot-template.json
-`` `
+
+```
+https://github.com/appuio/example-spring-boot-helloworld/blob/master/example-spring-boot-template.json
+```
 
 
-** Note: ** Existing resources can be exported as a template using the `oc export [ResourceType] --as-myapptemplate` command.
+**Note:** Existing resources can be exported as a template using the `oc export [ResourceType] --as-myapptemplate` command.
 For example,
 
-`` `
-Oc export is, bc, dc, route, service --as-template = example-spring-boot -o json> example-spring-boot-template.json
-`` `
+```
+oc export is, bc, dc, route, service --as-template=example-spring-boot -o json> example-spring-boot-template.json
+```
 
 It is important that the Imagestreams are defined at the top in the template file. Otherwise, the first build will not work.
 
@@ -88,5 +89,5 @@ It is important that the Imagestreams are defined at the top in the template fil
 
 ** End Lab 11 **
 
-<P width = "100px" align = "right"> <a href="12_template_creation.md"> Create your own templates → </a> </ p>
+<p width = "100px" align = "right"> <a href="12_template_creation.md"> Create your own templates → </a> </p>
 [← back to overview] (../README.md)
