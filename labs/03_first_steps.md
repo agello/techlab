@@ -36,13 +36,13 @@ The OpenShift V3 Web Console allows users to perform certain tasks directly via 
 ## Task: LAB3.2
 1. Log on to the Lab platform using the Web Console.
 
-  ** Note: ** The ** URL **, user name and password for your account will be provided to you by Techlab by the Instructor.
+  **Note:** The **URL**, user name and password for your account will be provided to you by Techlab by the Instructor.
 
 1. Now go to the overview of your newly created project. Currently the project is still empty.
 
 1. Add your first application to your project using * Add to Project *. As an example project, we use an APPUiO Example.
 
-  3.1. Select the base image ** php 5.6 **
+  3.1. Select the base image **php 5.6**
   
 ![php5.6](../images/lab_3_php5.6.png)
 
@@ -54,14 +54,14 @@ The OpenShift V3 Web Console allows users to perform certain tasks directly via 
   
 ![php5.6](../images/lab_3_example1.png)
 
-1. The application has been created. The link ** Continue to overview ** gives you an overview.
+1. The application has been created. The link **Continue to overview** gives you an overview.
 
 1. The build of your application is started. Follow the build and look at the sample app after deployment.
 
 ![php5.6](../images/lab_3_example1-deployed.png)
 
 
-You have now deployed your first application using the so-called ** [Source to Image] ** build on OpenShift deployed .
+You have now deployed your first application using the so-called **[Source to Image]** build on OpenShift deployed .
 
 **Tip:** Use the following command to switch to another project:
 
