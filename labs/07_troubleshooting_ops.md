@@ -4,7 +4,7 @@ This lab will show you how to deal with errors and troubleshooting, and which to
 
 ## Log in to container
 
-We use the project from [Lab 4] (04_deploy_dockerimage.md) `[USER] -dockerimage`
+We use the project from [Lab 4] (04_deploy_dockerimage.md) `[USER]-dockerimage`
 
 Running containers are treated as unalterable infrastructure and should not be modified in general. However, there are usecases where you have to log into the containers. For example, for debugging and analysis.
 
@@ -45,13 +45,13 @@ $ oc exec [POD] env
 
 ```
 $ oc exec example-spring-boot-4-8mbwe env
-PATH: / usr / local / bin / usr / sbin: / usr / bin: / sbin: / usr / Bin
+PATH: /usr/local/bin/usr/sbin:/usr/bin:/sbin:/usr/bin
 HOSTNAME = example-spring-boot-4-8mbwe
 KUBERNETES_SERVICE_PORT_DNS_TCP = 53
 KUBERNETES_PORT_443_TCP_PROTO = tcp
 KUBERNETES_PORT_443_TCP_ADDR = 172.30.0.1
 KUBERNETES_PORT_53_UDP_PROTO = udp
-KUBERNETES_PORT_53_TCP = tcp: //172.30.0.1: 53
+KUBERNETES_PORT_53_TCP = tcp://172.30.0.1: 53
 ...
 ```
 
@@ -63,7 +63,7 @@ The log files for a pod can be displayed in the web console as well as in the CL
 $ oc logs [POD]
 ```
 
-The `-f` parameter has the same behavior as` tail -f`
+The `-f` parameter has the same behavior as `tail -f`
 
 If a pod is in the status **CrashLoopBackOff**, this means that it could not be started successfully even after repeated restarts. The logfiles can be displayed even if the pod is not running with the following command.
 
@@ -81,8 +81,8 @@ OpenShift 3 allows you to forward any ports from the development workstation to 
 Activity: Access the Springboot Metrics from [Lab 4] (04_deploy_dockerimage.md).
 
 ```
-oc get po - namespace = "[USER] -dockerimage"
-oc port-forward example-spring-boot-1-xj1df 9000: 9000 --namespace = "[USER] -dockerimage"
+oc get po -namespace="[USER]-dockerimage"
+oc port-forward example-spring-boot-1-xj1df 9000:9000 --namespace="[USER]-dockerimage"
 ```
 
 Do not forget to change the pod name to your own installation. Autocompletion can be used if installed.
