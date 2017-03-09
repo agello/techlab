@@ -357,7 +357,7 @@ Verify during a deployment of the application whether an update of the applicati
 Once per second a request:
 
 ```
-while true; do sleep 1; curl -s http://[route]/pod/; date "+ TIME:% H:% M:% S,% 3N"; done
+while true; do sleep 1; curl -s http://[route]/pod/; date "+ TIME:%H:%M:%S,%3N"; done
 ```
 
 Starting Deployment:
