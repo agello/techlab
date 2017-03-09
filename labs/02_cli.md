@@ -48,7 +48,7 @@ C:\OpenShift\
 The oc client must be able to run.
 
 ``
-Cd ~/bin
+cd ~/bin
 chmod +x oc
 ``
 
@@ -58,7 +58,7 @@ Under ** Linux ** and ** macOS ** the directory ~ / bin is already in the PATH, 
 
 If the oc client has been placed in a different directory, the PATH can be set as follows:
 ``
-$ Export PATH = $PATH: [path to oc client]
+$ export PATH = $PATH: [path to oc client]
 ``
 
 ### Windows
@@ -78,7 +78,7 @@ Place the oc client directly in the directory * C:\Windows *.
 
 The oc client should now be installed correctly. The best way to do this is to run the following command:
 ``
-$ Oc version
+$ oc version
 ``
 The following output should be displayed:
 ``
@@ -95,12 +95,12 @@ If this is not the case, the PATH variable may not be set correctly.
 With Linux and Mac, the bashkompletion can be temporarily set with the following command:
 
 ``
-Source <(oc completion bash)
+source <(oc completion bash)
 ``
 
 Or for zsh:
 ``
-Source <(oc completion zsh)
+source <(oc completion zsh)
 ``
 
 ---
