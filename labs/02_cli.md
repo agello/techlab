@@ -4,7 +4,7 @@ In this lab, we will install and configure the oc client so that we can then tak
 
 ## Command Line Interface
 
-The ** oc client ** provides an interface to OpenShift V3.
+The **oc client** provides an interface to OpenShift V3.
 
 The client is programmed in Go and comes as a single binary for the following operating systems:
 
@@ -25,19 +25,19 @@ The oc client is downloaded from the [GitHub Repository of OpenShift Origin] (ht
 
 Once the client has been downloaded, it must be placed on the system in a directory accessible via the ** PATH **.
 
-** Linux **
+**Linux**
 
 ``
 ~/Bin
 ``
 
-** macOS **
+**macOS**
 
 ``
 ~/Bin
 ``
 
-** Windows **
+**Windows**
 
 ``
 C:\OpenShift\
@@ -57,7 +57,7 @@ chmod +x oc
 
 ## register the oc client in the PATH
 
-Under **Linux** and ** macOS ** the directory ~/bin is already in the PATH, so nothing has to be done here.
+Under **Linux** and **macOS** the directory ~/bin is already in the PATH, so nothing has to be done here.
 
 If the oc client has been placed in a different directory, the PATH can be set as follows:
 
@@ -73,9 +73,9 @@ On Windows, the PATH can be configured in the advanced system settings. This is 
 - [Windows 8] (http://www.itechtics.com/customize-windows-environment-variables/)
 - [Windows 10] (http://techmixx.de/windows-10-umgebungsvariablen-bearbeiten/)
 
-** Windows Quickhack **
+**Windows Quickhack**
 
-Place the oc client directly in the directory * C:\Windows *.
+Place the oc client directly in the directory *C:\Windows*.
 
 
 ## Verify the installation
