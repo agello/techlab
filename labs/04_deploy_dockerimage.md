@@ -13,9 +13,9 @@ The first step is to create a new project. A project is a grouping of resources 
 
 Therefore, create a new project called `[USER] -dockerimage`:
 
-``
+```
 $ oc new-project [USER] -dockerimage
-``
+```
 
 `oc new-project` will automatically switch to the newly created project. The `oc get` command can display resources of a particular type.
 
@@ -33,7 +33,7 @@ $ oc new-app appuio / example-spring-boot
 
 Output:
 
-``
+```
 -> Found Docker image d790313 (3 weeks old) from Docker for "appuio/example-spring-boot"
 
     APPUiO Springboot App
@@ -54,7 +54,7 @@ Output:
 -> Success
     Run 'oc status' to view your app.
 
-``
+```
 
 For our Lab we use an APPUiO example (Java SpringBoot application):
 
