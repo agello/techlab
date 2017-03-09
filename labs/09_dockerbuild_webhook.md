@@ -111,14 +111,14 @@ $ vim app/index.php
 ![Github Webhook](../images/lab_9_codechange1.png)
 
 ```
-    <Div class = "container">
+    <div class = "container">
 
-      <Div class = "starter-template">
-        <H1> Hi <? Php echo 'OpenShift Techlab'?> </ H1>
-        <P class = "lead"> APPUiO Example Dockerfile PHP </ p>
-      </ Div>
+      <div class = "starter-template">
+        <h1> Hi <?Php echo 'OpenShift Techlab'?> </h1>
+        <p class = "lead"> APPUiO Example Dockerfile PHP </p>
+      </div>
 
-    </ Div>
+    </div>
 ```
 
 Push your Change:
