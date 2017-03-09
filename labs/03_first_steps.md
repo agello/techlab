@@ -19,7 +19,7 @@ A project in OpenShift is the top level concept to organize your applications, d
 ## Task: LAB3.1
 Create a new project on the lab platform.
 
-**Note**: For your project name, use your github name or your last name, for example `[USER] -example1`
+**Note**: For your project name, use your github name or your last name, for example `[USER]-example1`
 
 > How can I create a new project?
 
@@ -93,7 +93,7 @@ $ oc delete all -l app=appuio-php-sti-example
 ## Solution: LAB3.1
 
 ```
-$ oc new-project [USER] -example1
+$ oc new-project [USER]-example1
 ```
 
 ---
