@@ -102,7 +102,7 @@ To do this, replace `[route]` with your defined route:
 **Tip:** oc get route
 
 ```
-while true; do sleep 1; curl -s http://[route]/pod/;date "+ TIME:% H:% M:% S,% 3N"; done
+while true; do sleep 1; curl -s http://[route]/pod/;date "+ TIME:%H:%M:%S,%3N"; done
 ```
 
 Or in PowerShell (Attention: only from PowerShell version 3.0!):
@@ -306,7 +306,7 @@ The configuration under Container must then look as follows:
       Containers:
         -
           Name: example-php-docker-helloworld
-          Image: 'appuio / example-php-docker-helloworld @ sha256: 6a19d4a1d868163a402709c02af548c80635797f77f25c0c391b9ce8cf9a56cf'
+          Image: 'appuio/example-php-docker-helloworld @ sha256: 6a19d4a1d868163a402709c02af548c80635797f77f25c0c391b9ce8cf9a56cf'
           Ports:
             -
               ContainerPort: 8080
@@ -314,12 +314,12 @@ The configuration under Container must then look as follows:
           Resources: {}
           ReadinessProbe:
             HttpGet:
-              Path: / health /
+              Path: /health/
               Port: 8080
               Scheme: HTTP
             InitialDelaySeconds: 10
             TimeoutSeconds: 1
-          TerminationMessagePath: / dev / termination-log
+          TerminationMessagePath: /dev/termination-log
           ImagePullPolicy: IfNotPresent
 ```
 
@@ -328,7 +328,7 @@ The configuration under Container must then look as follows:
                 "Containers": [
                     {
                         "Name": "appuio-php-docker",
-                        "Image": "appuio / example-php-docker-helloworld @ sha256: 9e927f9d6b453f6c58292cbe79f08f5e3db06ac8f0420e22bfd50c750898c455",
+                        "Image": "appuio/example-php-docker-helloworld@sha256: 9e927f9d6b453f6c58292cbe79f08f5e3db06ac8f0420e22bfd50c750898c455",
                         "Ports": [
                             {
                                 "ContainerPort": 8080,
@@ -338,14 +338,14 @@ The configuration under Container must then look as follows:
                         "Resources": {},
                         "ReadinessProbe": {
                             "HttpGet": {
-                                "Path": "/ health /",
+                                "Path": "/health/",
                                 "Port": 8080,
                                 "Scheme": "HTTP"
                             },
                             "InitialDelaySeconds": 10,
                             "TimeoutSeconds": 1
                         },
-                        "TerminationMessagePath": "/ dev / termination-log",
+                        "TerminationMessagePath": "/dev/termination-log",
                         "ImagePullPolicy": "Always"
                     }
                 ],
@@ -357,7 +357,7 @@ Verify during a deployment of the application whether an update of the applicati
 Once per second a request:
 
 ```
-while true; Do sleep 1; Curl -s http: //[route]/pod/; Date "+ TIME:% H:% M:% S,% 3N"; Done
+while true; do sleep 1; curl -s http://[route]/pod/; date "+ TIME:% H:% M:% S,% 3N"; done
 ```
 
 Starting Deployment:
