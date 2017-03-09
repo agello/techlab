@@ -60,7 +60,7 @@ Now scale the mysql pod to 0 and then back to 1. Observe that the new pod is no 
 
 ---
 
-** End Lab 10 **
+**End Lab 10**
 
 <p width = "100px" align = "right"> <a href="11_template.md"> Application templates → </a> </p>
 [← back to overview] (../README.md)
