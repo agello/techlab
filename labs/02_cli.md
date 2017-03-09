@@ -49,7 +49,9 @@ The oc client must be able to run.
 
 ``
 cd ~/bin
+``
 
+``
 chmod +x oc
 ``
 
