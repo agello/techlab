@@ -49,7 +49,7 @@ The OpenShift V3 Web Console allows users to perform certain tasks directly via 
   3.2. Give your example a speaking name and the following URL as Repo URL
   
   ``
-  Https://github.com/appuio/example-php-sti-helloworld.git
+  https://github.com/appuio/example-php-sti-helloworld.git
   ``
   
 ![php5.6](../images/lab_3_example1.png)
