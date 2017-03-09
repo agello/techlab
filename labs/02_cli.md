@@ -114,5 +114,5 @@ source <(oc completion zsh)
 
 
 
-<P width = "100px" align = "right"> <a href="03_first_steps.md"> Getting Started on the Lab Platform → </a> </ p>
+<p width = "100px" align = "right"> <a href="03_first_steps.md"> Getting Started on the Lab Platform → </a> </p>
 [← back to overview] (../README.md)
