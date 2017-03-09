@@ -23,9 +23,9 @@ Using the CLI, the MySQL service can be created as follows:
 
 ```
 $ oc new-app mysql-ephemeral \
-     -pMEMORY_LIMIT = 128Mi \
-     -pMYSQL_USER = appuio -pMYSQL_PASSWORD = appuio \
-     -pMYSQL_DATABASE = appuio -pDATABASE_SERVICE_NAME = mysql
+     -pMEMORY_LIMIT=128Mi \
+     -pMYSQL_USER=appuio -pMYSQL_PASSWORD=appuio \
+     -pMYSQL_DATABASE=appuio -pDATABASE_SERVICE_NAME=mysql
 ```
 
 ### Web Console
@@ -49,7 +49,7 @@ For example, the value for the variable SPRING_DATASOURCE_URL is:
 ```
 Name of service: mysql
 
-Jdbc: mysql://mysql/appuio?AutoReconnec= true
+Jdbc: mysql://mysql/appuio?AutoReconnect=true
 ```
 
 We can now set these environment variables in the DeploymentConfig example-spring-boot. After the **ConfigChange** (ConfigChange is registered as a trigger in the DeploymentConfig), the application is automatically deployed again. Because of the new environment variables the application connects to the MySQL DB and [Liquibase](http://www.liquibase.org/) creates the schema and imports the test data.
@@ -72,9 +72,9 @@ Mysql.techlab-dockerimage.svc.cluster.local
 Command for setting the environment variables:
 ```
  $ oc env dc example-spring-boot \
-      -e SPRING_DATASOURCE_URL = jdbc: mysql://mysql/appuio?AutoReconnect=true \
-      -e SPRING_DATASOURCE_USERNAME = appuio -e SPRING_DATASOURCE_PASSWORD = appuio \
-      -e SPRING_DATASOURCE_DRIVER_CLASS_NAME = com.mysql.jdbc.Driver
+      -e SPRING_DATASOURCE_URL=jdbc: mysql://mysql/appuio?AutoReconnect=true \
+      -e SPRING_DATASOURCE_USERNAME=appuio -e SPRING_DATASOURCE_PASSWORD=appuio \
+      -e SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.jdbc.Driver
 ```
 
 You can use the following command to view DeploymentConfig as JSON. New, the Config also contains the set environment variables:
@@ -100,7 +100,7 @@ You can use the following command to view DeploymentConfig as JSON. New, the Con
 	        },
 	        {
 	            "Name": "SPRING_DATASOURCE_URL",
-	            "Value": "jdbc: mysql: // mysql / appuio"
+	            "Value": "jdbc: mysql://mysql/appuio"
 	        }
 	    ],
 ...
@@ -147,7 +147,7 @@ Mysql>
 Then you can use
 
 ```
-Showtables;
+showtables;
 ```
 
 Display all tables.
