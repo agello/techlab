@@ -4,25 +4,26 @@ In contrast to [Lab 11] (11_template.md), we write / define our own templates be
 
 ## Helpful oc client commands
 List all commands:
-`` `
-$ Oc help
-`` `
+```
+$ oc help
+```
 
 Concepts and types:
-`` `
-$ Oc types
-`` `
+```
+$ oc types
+```
 
 Overview of all resources:
-`` `
-$ Oc get all
-`` `
+```
+$ oc get all
+```
 
 Information about a resource:
-`` `
-$ Oc get <RESOURCE_TYPE> <RESOURCE_NAME>
-$ Oc describe <RESOURCE_TYPE> <RESOURCE_NAME>
-`` `
+
+```
+$ oc get <RESOURCE_TYPE> <RESOURCE_NAME>
+$ oc describe <RESOURCE_TYPE> <RESOURCE_NAME>
+```
 
 ## Generation
 The resources are created automatically via "oc new-app" or "Add to project" in the web console. In the web console, the creation can be easily configured.
@@ -30,35 +31,37 @@ The resources are created automatically via "oc new-app" or "Add to project" in 
 This is usually not enough for productive use. Because it takes more control over the configuration. Own templates are the solution for this. However, they must not be written by hand but can be generated as a template.
 
 ### Generation before creation
-With ** oc new-app **, OpenShift parses the given images, templates, source code repositories, etc., and creates the definition of the various resources. The option ** - o ** provides the definition without the resources being created.
+With **oc new-app**, OpenShift parses the given images, templates, source code repositories, etc., and creates the definition of the various resources. The option **- o** provides the definition without the resources being created.
 
 This is the definition of the hello-world image.
-`` `
-$ Oc new app hello-world -o json
-`` `
+```
+$ oc new app hello-world -o json
+```
 
 Exciting is also to observe what OpenShift from its own project. A Git repository or a local path of the computer can be specified for this purpose.
 
 Sample command when you are in the root directory of the project:
-`` `
-$ Oc new-app. -o json
-`` `
-If different ImageStreams are in question or none has been found, it must be specified:
-`` `
-$ Oc new-app. --image-stream = wildfly: latest -o json
-`` `
+```
+$ oc new-app. -o json
+```
 
-`Oc new-app` always creates a list of resources. If necessary, this can be converted to a template using [jq] (https://stedolan.github.io/jq/)
-`` `
-$ Oc new-app. --image-stream = wildfly: latest -o json | \
-  Jq '{child: "Template", apiVersion: .apiVersion, metadata: {name: "mytemplate"}, objects: .items}
-`` `
+If different ImageStreams are in question or none has been found, it must be specified:
+
+```
+$ oc new-app. --image-stream=wildfly: latest -o json
+```
+
+`oc new-app` always creates a list of resources. If necessary, this can be converted to a template using [jq](https://stedolan.github.io/jq/)
+```
+$ oc new-app. --image-stream = wildfly: latest -o json | \
+  jq '{child: "Template", apiVersion: .apiVersion, metadata: {name: "mytemplate"}, objects: .items}
+```
 
 ### Generation after creation
-Existing resources are exported with ** oc export **.
-`` `
-$ Oc export route my-route
-`` `
+Existing resources are exported with **oc export**.
+```
+$ oc export route my-route
+```
 
 What resources does it need?
 
@@ -71,18 +74,18 @@ The following resources are required for a complete template:
 * Services
 
 Example command to generate an export of the most important resources as a template:
-`` `
-$ Oc export is, bc, pvc, dc, route, service --as-template = my-template -o json> my-template.json
-`` `
-Without the * - as-template * option, a list of items would be exported instead of a template containing Objects.
+```
+$ oc export is, bc, pvc, dc, route, service --as-template=my-template -o json> my-template.json
+```
+Without the *-as-template* option, a list of items would be exported instead of a template containing Objects.
 
-Currently, there is an open [Issue] (https://github.com/openshift/origin/issues/8327) which causes ImageStreams to stop working properly after re-importing. As a workaround, the attribute `.spec.dockerImageRepository`, if present, can be replaced with the value of the attribute` .tags [0] .annotations ["openshift.io/imported-from"] `. With [jq] (https://stedolan.github.io/jq/), this can be done automatically:
+Currently, there is an open [Issue](https://github.com/openshift/origin/issues/8327) which causes ImageStreams to stop working properly after re-importing. As a workaround, the attribute `.spec.dockerImageRepository`, if present, can be replaced with the value of the attribute` .tags [0] .annotations ["openshift.io/imported-from"] `. With [jq](https://stedolan.github.io/jq/), this can be done automatically:
 
-`` `
-$ Oc export is, bc, pvc, dc, route, service --as-template = my-template -o json |
-  Jq '(.objects [] | select (.kind == "ImageStream") | .spec) | = \
+```
+$ oc export is, bc, pvc, dc, route, service --as-template=my-template -o json |
+  jq '(.objects [] | select (.kind == "ImageStream") | .spec) | = \
     (.dockerImageRepository = .tags [0] .annotations ["openshift.io/imported-from"]) '> my-template.json
-`` `
+```
 
 Attributes with value `null` and the annotation` openshift.io / generated-by` may be removed from the template.
 
@@ -90,64 +93,64 @@ Attributes with value `null` and the annotation` openshift.io / generated-by` ma
 You can also retrieve existing templates from the platform to create your own templates.
 
 Available templates are stored in the OpenShift Namespace. This is how all templates are listed:
-`` `
-$ Oc get templates -n openshift
-`` `
+```
+$ oc get templates -n openshift
+```
 
 So we get a copy of the eap70-mysql-persistent-s2i template:
-`` `
-$ Oc exporttemplate eap70-mysql-persistent-s2i -o json -n openshift> eap70-mysql-persistent-s2i.json
-`` `
+```
+$ oc exporttemplate eap70-mysql-persistent-s2i -o json -n openshift> eap70-mysql-persistent-s2i.json
+```
 
 ## Parameters
 In order for the applications to be adapted for their own needs, there are parameters. Generated or exported templates should replace fixed values, such as host names or passwords, with parameters.
 
 ### Display the parameters of templates
 The parameters of a template are displayed with ** oc process --parameters **. Here we will see which parameters are defined in the CakePHP MySQL Template:
-`` `
-$ Oc process --parameters cakephp-mysql-example -n openshift
+```
+$ oc process --parameters cakephp-mysql-example -n openshift
 NAME DESCRIPTION GENERATOR VALUE
 NAME The name assigned to all of the frontend objects defined in this template. Cakephp-mysql-example
 NAMESPACE The OpenShift Namespace where the ImageStream resides. Openshift
 MEMORY_LIMIT Maximum capacity of the CakePHP container can use. 512Mi
 MEMORY_MYSQL_LIMIT Maximum amount of memory in the MySQL container can use. 512Mi
 ...
-`` `
+```
 
 ### Replace the parameters of templates with values
 For the creation of the applications, desired parameters can be replaced with values. To do this ** oc process **:
-`` `
-Oc process -f eap70-mysql-persistent-s2i.json \
-  -v PARAM1 = value1, PARAM2 = value2> processed-template.json
-`` `
+```
+oc process -f eap70-mysql-persistent-s2i.json \
+  -v PARAM1=value1, PARAM2=value2 > processed-template.json
+```
 This will replace the template with the given values ​​and write it to a new file. This file will be a list of Resources / Items that can be created with ** oc create **:
-`` `
-Oc create -f processed-template.json
-`` `
+```
+oc create -f processed-template.json
+```
 This can also be done in one step:
-`` `
-Oc process -f eap70-mysql-persistent-s2i.json \
-  -v PARAM1 = value1, PARAM2 = value2 \
-  | Oc create -f -
-`` `
+```
+oc process -f eap70-mysql-persistent-s2i.json \
+  -v PARAM1=value1, PARAM2=value2 \
+  | oc create -f -
+```
 
 ## Write templates
 OpenShift documentation:
-* [Template concept] (https://docs.openshift.com/container-platform/3.3/architecture/core_concepts/templates.html)
-* [Write templates] (https://docs.openshift.com/container-platform/3.3/dev_guide/templates.html)
+* [Template concept](https://docs.openshift.com/container-platform/3.3/architecture/core_concepts/templates.html)
+* [Write templates](https://docs.openshift.com/container-platform/3.3/dev_guide/templates.html)
 
 Applications should be designed so that only a few configurations differ per environment. These values ​​are defined as parameters in the template.
 Thus, the first step after generating a template definition is to define parameters. The template is expanded with variables, which are then replaced with the parameter values. Thus, the variable `$ {DB_PASSWORD}` is replaced by the parameter with the name `DB_PASSWORD`.
 
 ### Generated parameters
 Passwords are often generated automatically because the value is only used in the OpenShift project. This can be achieved with a generate definition.
-`` `
+```
 Parameters:
   - name: DB_PASSWORD
     Description: "DB connection password"
     Attractions: expression
     From: "[a-zA-Z0-9] {13}"
-`` `
+```
 This definition would generate a random, 13-character password with small and uppercase letters as well as numbers.
 
 Even if a parameter is configured with Generate Definition, it can be overwritten during generation.
@@ -160,22 +163,22 @@ Templates can be instantiated using `oc new-app -f <FILE> | <URL> -p <PARAM1> = 
 If the parameters of the template have already been set with `oc process`, it is no longer necessary to specify the parameters.
 
 ### Metadata / Labels
-`Oc new-app` inserts the label` app = <TEMPLATE NAME> `into all instanced resources by default. For some versions of OpenShift, this can lead to [invalid] (https://github.com/openshift/origin/issues/10782) resource definitions.
-As a workaround, an alternative label can be configured with `oc new-app -l <LABELNAME> = <LABELVALUE> ...`.
+`oc new-app` inserts the label` app=<TEMPLATE NAME> `into all instanced resources by default. For some versions of OpenShift, this can lead to [invalid](https://github.com/openshift/origin/issues/10782) resource definitions.
+As a workaround, an alternative label can be configured with `oc new-app -l <LABELNAME>=<LABELVALUE> ...`.
 
 ## Create resources from docker-compose.yml
 
 Since version 3.3, the OpenShift Container Platform offers the possibility to create resources from the Docker Compose configuration file `docker-compose.yml`. This functionality is still classified as experimental. Example:
-`` `
-Git clone -b techlab https://github.com/appuio/weblate-docker#techlab
-Oc import docker-compose -f docker-compose.yml -o json
-`` `
+```
+git clone -b techlab https://github.com/appuio/weblate-docker#techlab
+oc import docker-compose -f docker-compose.yml -o json
+```
 
 The possibility to import a file directly via URL is provided but not yet implemented. By omitting the `-o json` option, the resources are created directly instead of outputting. Currently, services for existing docker images are created only if an explicit port configuration is present in `docker-compose.yml`. These can be created in the meantime using `oc new-app`:
-`` `
-Oc new-app --name = databasePostgres: 9.4 -o json | jq '.items [] | Select (.kind == "Service") '| Oc create -f -
-Oc new-app --name = cache memcached: 1.4 -o json | jq '.items [] | Select (.kind == "service") '| oc create -f -
-`` `
+```
+oc new-app --name=databasePostgres:9.4 -o json | jq '.items [] | select (.kind == "Service") '| oc create -f -
+oc new-app --name=cachememcached:1.4 -o json | jq '.items [] | select (.kind == "service") '| oc create -f -
+```
 
 ---
 
