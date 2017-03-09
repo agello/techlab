@@ -35,25 +35,25 @@ With **oc new-app**, OpenShift parses the given images, templates, source code r
 
 This is the definition of the hello-world image.
 ```
-$ oc new app hello-world -o json
+$ oc new-app hello-world -o json
 ```
 
 Exciting is also to observe what OpenShift from its own project. A Git repository or a local path of the computer can be specified for this purpose.
 
 Sample command when you are in the root directory of the project:
 ```
-$ oc new-app. -o json
+$ oc new-app -o json
 ```
 
 If different ImageStreams are in question or none has been found, it must be specified:
 
 ```
-$ oc new-app. --image-stream=wildfly: latest -o json
+$ oc new-app --image-stream=wildfly:latest -o json
 ```
 
 `oc new-app` always creates a list of resources. If necessary, this can be converted to a template using [jq](https://stedolan.github.io/jq/)
 ```
-$ oc new-app. --image-stream = wildfly: latest -o json | \
+$ oc new-app --image-stream = wildfly: latest -o json | \
   jq '{child: "Template", apiVersion: .apiVersion, metadata: {name: "mytemplate"}, objects: .items}
 ```
 
