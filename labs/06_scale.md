@@ -7,19 +7,19 @@ In this lab we will show you how to scale applications in OpenShift. We also sho
 We are creating a new project
 
 ```
-$ oc new-project [USER] -scale
+$ oc new-project [USER]-scale
 ```
 
 And add an application to the project
 
 ```
-$ oc new-app appuio / example-php-docker-helloworld --name = appuio-php-docker
+$ oc new-app appuio/example-php-docker-helloworld --name=appuio-php-docker
 ```
 
 And provide the service (expose)
 
 ```
-$ oc expose service appuio php docker
+$ oc expose service appuio-php-docker
 ```
 
 If we want to scale our Example application, we must tell our ReplicationController (rc) that we want to have 3 replicas of the image running at the same time.
@@ -45,7 +45,7 @@ The rc tells us how many pods we expect (spec) and how many are currently deploy
 Now we scale our Example application on 3 replicas:
 
 ```
-$ oc scale --replicas = 3 rc appuio-php-docker-1
+$ oc scale --replicas=3 rc appuio-php-docker-1
 ```
 
 Let us check the number of replicas on the ReplicationController:
@@ -72,7 +72,7 @@ Appuio-php-docker-1-tolpx 1/1 Running 0 2m
 Finally, look at the service. This should now reference all three endpoints:
 
 ```
-$ oc describe svc appuio php docker
+$ oc describe svc appuio-php-docker
 Name: appuio-php-docker
 Namespace: techlab-scale
 Labels: app = appuio-php-docker
@@ -102,7 +102,7 @@ To do this, replace `[route]` with your defined route:
 **Tip:** oc get route
 
 ```
-while true; do sleep 1; Curl -s http://[route]/pod/; Date "+ TIME:% H:% M:% S,% 3N"; Done
+while true; do sleep 1; curl -s http://[route]/pod/;date "+ TIME:% H:% M:% S,% 3N"; done
 ```
 
 Or in PowerShell (Attention: only from PowerShell version 3.0!):
@@ -110,7 +110,7 @@ Or in PowerShell (Attention: only from PowerShell version 3.0!):
 ```
 while (1) {
 	Start-Sleep -s 1
-	Invoke-RestMethod http: // [route] / pod /
+	Invoke-RestMethod http: //[route]/pod/
 	Get-Date-Format "+ TIME:% H:% M:% S,% 3N"
 }
 ```
