@@ -32,6 +32,7 @@ $ oc new-app appuio / example-spring-boot
 ``
 
 Output:
+
 ``
 -> Found Docker image d790313 (3 weeks old) from Docker for "appuio/example-spring-boot"
 
@@ -56,6 +57,7 @@ Output:
 ``
 
 For our Lab we use an APPUiO example (Java SpringBoot application):
+
 - Docker Hub: https://hub.docker.com/r/appuio/example-spring-boot/
 - GitHub (Source): https://github.com/appuio/example-spring-boot-helloworld
 
