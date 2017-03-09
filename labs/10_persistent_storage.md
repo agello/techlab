@@ -1,6 +1,6 @@
 # Lab 10: Persistent Storage and use for database
 
-Per se, data in a pod is not persistent, which is also the case in our example. If, for example, our MySQL pod disappears because of a change to the image, the existing data in the new pod will no longer exist. To prevent this, we are now attaching persistent storage to our MySQL pod.
+Data in a pod is not persistent, which is also the case in our example. If, for example, our MySQL pod disappears because of a change to the image, the existing data in the new pod will no longer exist. To prevent this, we are now attaching persistent storage to our MySQL pod.
 
 ## Task: LAB10.1:
 
@@ -16,40 +16,42 @@ However, the PersistentVolumeClaim represents the request, but not the resource 
 In the second step, the previously created PVC is integrated into the correct pod. In [LAB 6] (06_scale.md), we edited the Deployment Config to insert the Readiness Probe. The same is true for the Persistent Volume. In contrast to [LAB 6] (06_scale.md), we can expand the Deployment Config automatically with `oc volume`.
 
 The following command executes both the steps described at the same time, so it first creates the claim and then binds it as a volume in the pod:
-`` `
-$ Oc volume dc / mysql --add --name = mysql - data --type pvc \
+
+```
+$ oc volume dc/mysql --add --name=mysql -data --type pvc \
      --claim-name = mysqlpvc --claim-size = 256Mi --overwrite
-`` `
-** Note: ** The modified Deployment Config will automatically deploy a new pod to OpenShift. This means, unfortunately, that the previously created DB schema and already inserted data have been lost.
+```
+**Note:** The modified Deployment Config will automatically deploy a new pod to OpenShift. This means, unfortunately, that the previously created DB schema and already inserted data have been lost.
 
 Our application creates the DB schema at startup.
 
-** Tip: ** redeploy the application pod:
+**Tip:** redeploy the application pod:
 
-`` `
-$ Oc deploy example-spring-boot --latest
-`` `
+```
+$ oc deploy example-spring-boot --latest
+```
 
-With the command `oc get persistentvolumeclaim`, or something simple` oc get pvc`, we can now display the newly created PersistentVolumeClaim in the project:
-`` `
-$ Oc get pvc
+With the command `oc get persistentvolumeclaim`, or something simple `oc get pvc`, we can now display the newly created PersistentVolumeClaim in the project:
+
+```
+$ oc get pvc
 NAME STATUS VOLUME CAPACITY ACCESSMODES AGE
 Mysqlpvc Bound pv34 256Mi RWO, RWX 14s
-`` `
+```
 The two status and volume attributes tell us that our claim was linked to Persistent Volume pv34.
 
 With the following command, we can also check whether the volume has been integrated into the Deployment Config:
-`` `
-$ Oc volume dc / mysql
+```
+$ oc volume dc / mysql
 Deploymentconfigs / mysql
   Pvc / mysqlpvc (allocated 256MiB) as mysql-data
-`` `
+```
 
 ## Task: LAB10.2: Persistence test
 
 ### Restore Data
 
-Repeat [Lab Task 8.4] (08_database.md # l% C3% Solution-lab84).
+Repeat [Lab Task 8.4](08_database.md#Solution-lab84).
 
 
 ### Test
