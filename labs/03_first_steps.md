@@ -4,7 +4,7 @@ In this lab, we will be interacting with the Lab platform for the first time, vi
 
 ## Login
 
-** Note: ** 
+**Note:** 
 Make sure you have successfully completed [Lab 2] (02_cli.md).
 
 
@@ -19,11 +19,11 @@ A project in OpenShift is the top level concept to organize your applications, d
 ## Task: LAB3.1
 Create a new project on the lab platform.
 
-** Note **: For your project name, use your github name or your last name, for example `[USER] -example1`
+**Note**: For your project name, use your github name or your last name, for example `[USER] -example1`
 
 > How can I create a new project?
 
-** Tip **: information_source:
+**Tip**: information_source:
 
 ``
 $ oc help
@@ -44,7 +44,7 @@ The OpenShift V3 Web Console allows users to perform certain tasks directly via 
 
   3.1. Select the base image ** php 5.6 **
   
-! [Php5.6] (../ images / lab_3_php5.6.png)
+! [php5.6] (../images/lab_3_php5.6.png)
 
   3.2. Give your example a speaking name and the following URL as Repo URL
   
@@ -52,31 +52,31 @@ The OpenShift V3 Web Console allows users to perform certain tasks directly via 
   Https://github.com/appuio/example-php-sti-helloworld.git
   ``
   
-! [Php5.6] (../ images / lab_3_example1.png)
+! [php5.6] (../images/lab_3_example1.png)
 
 1. The application has been created. The link ** Continue to overview ** gives you an overview.
 
 1. The build of your application is started. Follow the build and look at the sample app after deployment.
 
-! [Php5.6] (../ images / lab_3_example1-deployed.png)
+! [php5.6] (../images/lab_3_example1-deployed.png)
 
 
 You have now deployed your first application using the so-called ** [Source to Image] ** build on OpenShift deployed .
 
-** Tip: ** Use the following command to switch to another project:
+**Tip:** Use the following command to switch to another project:
 
 ``
 $ oc project [projectname]
 ``
 
-** Tip: ** The following commands can be used to create the above example from the command line:
+**Tip:** The following commands can be used to create the above example from the command line:
 
 ``
 $ oc new-app https://github.com/appuio/example-php-sti-helloworld.git --name = appuio-php-sti-example
 $ oc expose svc appuio-php-sti-example
 ``
 
-** Tip: ** a whole app can be deleted with the following command:
+**Tip:** a whole app can be deleted with the following command:
 
 ``
 $ oc delete all -l app = appname
@@ -97,7 +97,7 @@ $ Oc new-project [USER] -example1
 ``
 ---
 
-** End Lab 3 **
+**End Lab 3**
 
 <p width = "100px" align = "right"> <a href="04_deploy_dockerimage.md"> Deploying a Docker Image → </a> </ p>
 [← back to overview] (../README.md)
