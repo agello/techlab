@@ -184,4 +184,4 @@ oc new-app --name=cachememcached:1.4 -o json | jq '.items [] | select (.kind == 
 
 ** End Lab 12 **
 
-[← back to overview] (../README.md)
+[← back to overview](../README.md)
