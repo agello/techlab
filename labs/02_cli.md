@@ -81,10 +81,12 @@ Place the oc client directly in the directory * C:\Windows *.
 ## Verify the installation
 
 The oc client should now be installed correctly. The best way to do this is to run the following command:
+
 ``
 $ oc version
 ``
 The following output should be displayed:
+
 ``
 Oc v1.3.1
 Kubernetes v1.3.0+52492b4
@@ -103,6 +105,7 @@ source <(oc completion bash)
 ``
 
 Or for zsh:
+
 ``
 source <(oc completion zsh)
 ``
