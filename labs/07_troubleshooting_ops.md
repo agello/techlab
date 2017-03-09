@@ -13,14 +13,15 @@ Running containers are treated as unalterable infrastructure and should not be m
 With OpenShift, remote shells can be opened into the pods without having to install SSH beforehand. For this, the command `oc rsh` is available.
 
 Select a pod using `oc get pods` and execute the following command:
-`` `
-$ Oc rsh [POD]
-`` `
+
+```
+$ oc rsh [POD]
+```
 
 You can now perform analyzes on the shell in the container:
 
-`` `
-Bash-4.2 $ ls -la
+```
+bash-4.2 $ ls -la
 Total 16
 Drwxr-xr-x. 7 default root 99 May 16 13:35.
 Drwxr-xr-x. 4 default root 54 May 16 13:36 ..
@@ -31,19 +32,19 @@ Drwxr-xr-x. 9 default root 4096 May 16 13:35 build
 Drwxr-xr-x. 3 root root 20 May 16 13:34 gradle
 -rwxr-xr-x. 1 root root 4971 May 16 13:33 gradlew
 Drwxr-xr-x. 4 root root 28 May 16 13:34 src
-`` `
+```
 
 ## Task: LAB7.2
 
 Individual commands within the container can be executed using `oc exec`:
 
-`` `
-$ Oc exec [POD] env
-`` `
+```
+$ oc exec [POD] env
+```
 
 
-`` `
-$ Oc exec example-spring-boot-4-8mbwe env
+```
+$ oc exec example-spring-boot-4-8mbwe env
 PATH: / usr / local / bin / usr / sbin: / usr / bin: / sbin: / usr / Bin
 HOSTNAME = example-spring-boot-4-8mbwe
 KUBERNETES_SERVICE_PORT_DNS_TCP = 53
@@ -52,24 +53,25 @@ KUBERNETES_PORT_443_TCP_ADDR = 172.30.0.1
 KUBERNETES_PORT_53_UDP_PROTO = udp
 KUBERNETES_PORT_53_TCP = tcp: //172.30.0.1: 53
 ...
-`` `
+```
 
 ## View log files
 
 The log files for a pod can be displayed in the web console as well as in the CLI.
 
-`` `
-$ Oc logs [POD]
-`` `
+```
+$ oc logs [POD]
+```
+
 The `-f` parameter has the same behavior as` tail -f`
 
-If a pod is in the status ** CrashLoopBackOff **, this means that it could not be started successfully even after repeated restarts. The logfiles can be displayed even if the pod is not running with the following command.
+If a pod is in the status **CrashLoopBackOff**, this means that it could not be started successfully even after repeated restarts. The logfiles can be displayed even if the pod is not running with the following command.
 
- `` `
-$ Oc logs -p [POD]
-`` `
+```
+$ oc logs -p [POD]
+```
 
-With OpenShift an EFK (Elasticsearch, Fluentd, Kibana) stack is delivered, which collects, rotates and aggregates all log files. Kibana allows logs to be searched, filtered and graphically edited. For more information and an optional LAB, please see [here] (../ additional-labs / logging_efk_stack.md).
+With OpenShift an EFK (Elasticsearch, Fluentd, Kibana) stack is delivered, which collects, rotates and aggregates all log files. Kibana allows logs to be searched, filtered and graphically edited. For more information and an optional LAB, please see [here](../additional-labs/logging_efk_stack.md).
 
 
 ## Task: LAB7.3 Port forwarding
@@ -78,20 +80,20 @@ OpenShift 3 allows you to forward any ports from the development workstation to 
 
 Activity: Access the Springboot Metrics from [Lab 4] (04_deploy_dockerimage.md).
 
-`` `
-Oc get po - namespace = "[USER] -dockerimage"
-Oc port-forward example-spring-boot-1-xj1df 9000: 9000 --namespace = "[USER] -dockerimage"
-`` `
+```
+oc get po - namespace = "[USER] -dockerimage"
+oc port-forward example-spring-boot-1-xj1df 9000: 9000 --namespace = "[USER] -dockerimage"
+```
 
 Do not forget to change the pod name to your own installation. Autocompletion can be used if installed.
 
-The metrics can now be viewed as the following: [http: // localhost: 9000 / metrics /] (http: // localhost: 9000 / metrics /) The metrics are displayed as json. With the same concept, you can now connect to a database using your local SQL client.
+The metrics can now be viewed as the following: [http://localhost:9000/metrics/](http://localhost:9000/metrics/) The metrics are displayed as json. With the same concept, you can now connect to a database using your local SQL client.
 
 For more information on port forwarding, please see the following link: https://docs.openshift.com/container-platform/3.3/dev_guide/port_forwarding.html
 
 ---
 
-** End Lab 7 **
+**End Lab 7**
 
-<P width = "100px" align = "right"> <a href="08_database.md"> Deploy and bind the database → </a> </ p>
+<p width = "100px" align = "right"> <a href="08_database.md"> Deploy and bind the database → </a> </p>
 [← back to overview] (../README.md)
