@@ -111,7 +111,7 @@ $ vim app/index.php
     <div class = "container">
 
       <div class = "starter-template">
-        <h1> Hi <?Php echo 'OpenShift Techlab'?> </h1>
+        <h1> Hi <?php echo 'OpenShift Techlab'?> </h1>
         <p class = "lead"> APPUiO Example Dockerfile PHP </p>
       </div>
 
