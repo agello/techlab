@@ -11,10 +11,10 @@ After deploying the source-to-image workflow to deploy an application to OpenShi
 
 The first step is to create a new project. A project is a grouping of resources (containers and docker images, pods, services, routes, configuration, quotas, limits, and more). Authorized users can manage these resources. Within an OpenShift V3 cluster, the name of a project must be unique.
 
-Therefore, create a new project called `[USER] -dockerimage`:
+Therefore, create a new project called `[USER]-dockerimage`:
 
 ```
-$ oc new-project [USER] -dockerimage
+$ oc new-project [USER]-dockerimage
 ```
 
 `oc new-project` will automatically switch to the newly created project. The `oc get` command can display resources of a particular type.
@@ -28,7 +28,7 @@ To view all the projects to which you are authorized.
 Once the new project is created, we can deploy the Docker Image in OpenShift using the following command:
 
 ``
-$ oc new-app appuio / example-spring-boot
+$ oc new-app appuio/example-spring-boot
 ``
 
 Output:
@@ -119,14 +119,14 @@ Use the following command to read additional information about the service:
 $ Oc get service example-spring-boot -o json
 ``
 
-``
+```
 {
     "Child": "service",
     "ApiVersion": "v1",
     "Metadata": {
         "Name": "example-spring-boot",
         "Namespace": "techlab",
-        "SelfLink": "/ api / v1 / namespaces / techlab / services / example-spring-boot",
+        "SelfLink": "/api/v1/namespaces/techlab/services/example-spring-boot",
         "Uid": "b32d0197-347e-11e6-a2cd-525400f6ccbc",
         "ResourceVersion": "17247237",
         "CreationTimestamp": "2016-06-17T11: 29: 05Z",
@@ -159,7 +159,7 @@ $ Oc get service example-spring-boot -o json
         "LoadBalancer": {}
     }
 }
-``
+```
 
 You can also use the corresponding command to display the details of a pod:
 
@@ -169,7 +169,8 @@ $ oc get pod example-spring-boot-3-nwzku -o json
 
 **Note:** First, query the pod name from your project (`oc get pods`) and replace it in the upper command.
 
-The `selector` area in the service defines which pods (` labels`) are used as endpoints. To do so, consider the corresponding configurations of the service and pod together.
+The `selector` area in the service defines which pods (`labels`) are used as endpoints. To do so, consider the corresponding configurations of the service and pod together.
+
 ```
 Service:
 --------
@@ -194,8 +195,9 @@ Reply with quote
 ```
 
 This link can be viewed using the `oc describe` command:
+
 ```
-$ oc describe service example-spring-boat
+$ oc describe service example-spring-boot
 ```
 
 ```
@@ -220,6 +222,7 @@ Under Endpoints, you will now find the currently running pod.
 Builds and deployments can monitor image streams and respond to changes appropriately. In our example, the ImageStream is used to trigger a deployment when something changes to the image.
 
 Use the following command to read additional information about the Image Stream:
+
 ``
 $ oc get imagestream example-spring-boot -o json
 ``
