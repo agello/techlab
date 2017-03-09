@@ -79,7 +79,7 @@ $ oc export is, bc, pvc, dc, route, service --as-template=my-template -o json> m
 ```
 Without the *-as-template* option, a list of items would be exported instead of a template containing Objects.
 
-Currently, there is an open [Issue](https://github.com/openshift/origin/issues/8327) which causes ImageStreams to stop working properly after re-importing. As a workaround, the attribute `.spec.dockerImageRepository`, if present, can be replaced with the value of the attribute` .tags [0] .annotations ["openshift.io/imported-from"] `. With [jq](https://stedolan.github.io/jq/), this can be done automatically:
+Currently, there is an open [Issue](https://github.com/openshift/origin/issues/8327) which causes ImageStreams to stop working properly after re-importing. As a workaround, the attribute `.spec.dockerImageRepository`, if present, can be replaced with the value of the attribute` .tags[0].annotations["openshift.io/imported-from"] `. With [jq](https://stedolan.github.io/jq/), this can be done automatically:
 
 ```
 $ oc export is, bc, pvc, dc, route, service --as-template=my-template -o json |
@@ -87,7 +87,7 @@ $ oc export is, bc, pvc, dc, route, service --as-template=my-template -o json |
     (.dockerImageRepository = .tags [0] .annotations ["openshift.io/imported-from"]) '> my-template.json
 ```
 
-Attributes with value `null` and the annotation` openshift.io / generated-by` may be removed from the template.
+Attributes with value `null` and the annotation` openshift.io/generated-by` may be removed from the template.
 
 ### Export existing templates
 You can also retrieve existing templates from the platform to create your own templates.
