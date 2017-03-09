@@ -254,7 +254,7 @@ In contrast to DeploymentConfig, which tells OpenShift how an application is to 
 
 ## Additional task for fast ;-)
 
-Look at the created resources with `oc get [ResourceType] [name] -o json` and` oc describe [ResourceType] [name] `from the first project` [USER] -example1`.
+Look at the created resources with `oc get [ResourceType] [name] -o json` and` oc describe [ResourceType] [name] `from the first project` [USER]-example1`.
 
 ---
 
