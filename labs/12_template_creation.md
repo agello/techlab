@@ -176,8 +176,8 @@ oc import docker-compose -f docker-compose.yml -o json
 
 The possibility to import a file directly via URL is provided but not yet implemented. By omitting the `-o json` option, the resources are created directly instead of outputting. Currently, services for existing docker images are created only if an explicit port configuration is present in `docker-compose.yml`. These can be created in the meantime using `oc new-app`:
 ```
-oc new-app --name=databasepostgres:9.4 -o json | jq '.items [] | select (.kind == "Service") '| oc create -f -
-oc new-app --name=cachememcached:1.4 -o json | jq '.items [] | select (.kind == "service") '| oc create -f -
+oc new-app --name=databasepostgres:9.4 -o json | jq '.items[] | select (.kind == "Service")'| oc create -f -
+oc new-app --name=cachememcached:1.4 -o json | jq '.items[] | select (.kind == "service")'| oc create -f -
 ```
 
 ---
