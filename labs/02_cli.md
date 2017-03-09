@@ -60,6 +60,7 @@ chmod +x oc
 Under ** Linux ** and ** macOS ** the directory ~ / bin is already in the PATH, so nothing has to be done here.
 
 If the oc client has been placed in a different directory, the PATH can be set as follows:
+
 ``
 $ export PATH = $PATH: [path to oc client]
 ``
