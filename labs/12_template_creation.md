@@ -170,7 +170,7 @@ As a workaround, an alternative label can be configured with `oc new-app -l <LAB
 
 Since version 3.3, the OpenShift Container Platform offers the possibility to create resources from the Docker Compose configuration file `docker-compose.yml`. This functionality is still classified as experimental. Example:
 ```
-git clone -b techlab https://github.com/appuio/weblate-docker#techlab
+git clone -b techlab https://github.com/appuio/weblate-docker.git
 oc import docker-compose -f docker-compose.yml -o json
 ```
 
