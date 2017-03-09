@@ -21,12 +21,12 @@ Go to the [GitHub Project page] (https://github.com/appuio/example-php-docker-he
 ![Fork](../images/lab_9_fork_example.png)
 
 
-You have now
+You now have
 ```
 https://github.com/[YourGitHubUser]/example-php-docker-helloworld
 ```
 
-A Fork of the Example project that you can expand as you want.
+a fork of the Example project that you can expand as you want.
 
 ## Deploy your own fork
 
@@ -97,10 +97,10 @@ From now, all pushes on your GitHub repository triggers a build and then deploy 
 ## Task: LAB9.3: Adjust the code
 
 Clone your Git repository and change to the code directory:
-`` `
+```
 $ git clone https://github.com/[YourGithubUser]/example-php-docker-helloworld.git
 $ cd example-php-docker-helloworld
-`` `
+```
 
 For example, adjust the file on line 56 ./app/index.php:
 
