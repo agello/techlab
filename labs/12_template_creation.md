@@ -53,7 +53,7 @@ $ oc new-app --image-stream=wildfly:latest -o json
 
 `oc new-app` always creates a list of resources. If necessary, this can be converted to a template using [jq](https://stedolan.github.io/jq/)
 ```
-$ oc new-app --image-stream = wildfly: latest -o json | \
+$ oc new-app --image-stream=wildfly:latest -o json | \
   jq '{child: "Template", apiVersion: .apiVersion, metadata: {name: "mytemplate"}, objects: .items}
 ```
 
