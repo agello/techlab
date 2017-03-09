@@ -32,7 +32,7 @@ a fork of the Example project that you can expand as you want.
 
 Create a new project:
 ```
-$ oc new-project [USER] -example4
+$ oc new-project [USER]-example4
 ```
 
 Create a new app for your fork. **Note:** Replace `[YourGithubUser]` with the name of your GitHub account:
