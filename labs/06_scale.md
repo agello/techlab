@@ -263,7 +263,7 @@ $ oc edit dc appuio-php-docker -o json
 
 The Readiness Probe must be added to the Deployment Config (dc) at:
 
-Spec -> template -> spec -> containers under *resources: {}* 
+Spec->template->spec->containers under *resources: {}* 
 
 **YAML:**
 
@@ -272,7 +272,7 @@ Spec -> template -> spec -> containers under *resources: {}*
           Resources: {}
           ReadinessProbe:
             HttpGet:
-              Path: / health /
+              Path: /health/
               Port: 8080
               Scheme: HTTP
             InitialDelaySeconds: 10
@@ -287,7 +287,7 @@ Spec -> template -> spec -> containers under *resources: {}*
                         "Resources": {},
                         "ReadinessProbe": {
                             "HttpGet": {
-                                "Path": "/ health /",
+                                "Path": "/health/",
                                 "Port": 8080,
                                 "Scheme": "HTTP"
                             },
@@ -369,7 +369,7 @@ $ oc deploy appuio-php-docker --latest
 
 ## Self Healing
 
-Through the Replication Controller, we have now told the platform that ** ** replicas are to run. What happens if we delete a pod?
+Through the Replication Controller, we have now told the platform that **n** replicas are to run. What happens if we delete a pod?
 
 Use `oc get pods` to find a pod in the status "running ", which you can * kill *.
 
