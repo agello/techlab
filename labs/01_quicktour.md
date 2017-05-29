@@ -4,7 +4,7 @@ In this lab the basic concepts of OpenShift are presented. We will also show you
 
 The terms and resources listed here are an excerpt from the official OpenShift documentation, further information about OpenShift can be found here:
 
->Https://docs.openshift.com/container-platform/3.3/architecture/index.html
+>https://docs.openshift.com/container-platform/3.3/architecture/index.html
 
 
 ## Basic concepts
