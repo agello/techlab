@@ -86,6 +86,7 @@ For example,
 
 **End Lab 3**
 
-<p width = "100px" align = "right"> <a href="04_deploy_dockerimage.md"> Deploying a Docker Image → </a> </p>
+<p width = "100px" align = "right"> <a href="04_deploy_dockerimage.md">Deploying a Docker Image →</a></p>
+
 
 [← back to overview](../README.md)
