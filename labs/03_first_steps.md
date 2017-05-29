@@ -15,13 +15,13 @@ A project in OpenShift is the top level concept to organize your applications, d
 
 
 ## Task: LAB3.1
-Create a new project on the lab platform.
+Create a new project on the lab platform with the oc CLI tool.
 
 **Note**: For your project name, use your github name or your last name, for example `[USER]-example1`
 
 > How can I create a new project?
 
-**Tip**: information_source:
+**Tip**: the oc tool has a built-in help function:
 
 ``oc help``
 
@@ -88,4 +88,4 @@ For example,
 
 <p width = "100px" align = "right"> <a href="04_deploy_dockerimage.md"> Deploying a Docker Image → </a> </p>
 
-[← back to overview] (../README.md)
+[← back to overview](../README.md)
