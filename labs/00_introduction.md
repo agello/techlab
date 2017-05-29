@@ -8,5 +8,6 @@ With a Platform as a Service (PaaS), the way we evolve software changes. Puzzle 
 
 ---
 
-<p width = "100px" align = "right"> <a href="01_quicktour.md"> Quicktour through OpenShift V3 → </a> </p>
+<p width = "100px" align = "right"><a href="01_quicktour.md"> Quicktour through OpenShift V3 → </a> </p>
+
 [← back to overview](../README.md)
