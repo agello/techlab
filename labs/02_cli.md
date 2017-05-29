@@ -13,7 +13,7 @@ The client is programmed in Go and comes as a single binary for the following op
 - Linux
 
 
-## oc Download and install client
+## Download oc and install client
 
 The oc client is downloaded from the [GitHub Repository of OpenShift Origin](https://github.com/openshift/origin/releases/tag/v1.5.1):
 
