@@ -49,7 +49,6 @@ Output:
     Service "example-spring-boot" created
 -> Success
     Run 'oc status' to view your app.
-
 ``
 
 For our Lab we use an APPUiO example (Java SpringBoot application):
