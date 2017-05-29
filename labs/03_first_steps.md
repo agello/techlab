@@ -5,15 +5,13 @@ In this lab, we will be interacting with the Lab platform for the first time, vi
 ## Login
 
 **Note:** 
-Make sure you have successfully completed [Lab 2] (02_cli.md).
-
+Make sure you have successfully completed [Lab 2](02_cli.md).
 
 Please use the information provided by the instructor for the login on the web interface as well as with `oc`.
 
-
 ## Create a project
 
-A project in OpenShift is the top level concept to organize your applications, deployments, builds, containers, etc. See [Lab1] (01_quicktour.md).
+A project in OpenShift is the top level concept to organize your applications, deployments, builds, containers, etc. See [Lab1](01_quicktour.md).
 
 
 ## Task: LAB3.1
@@ -25,9 +23,7 @@ Create a new project on the lab platform.
 
 **Tip**: information_source:
 
-``
-$ oc help
-``
+``oc help``
 
 ## Web Console
 
@@ -40,17 +36,15 @@ The OpenShift V3 Web Console allows users to perform certain tasks directly via 
 
 1. Now go to the overview of your newly created project. Currently the project is still empty.
 
-1. Add your first application to your project using * Add to Project *. As an example project, we use an APPUiO Example.
+1. Add your first application to your project using *Add to Project*. As an example project, we use an Agello Example.
 
-  3.1. Select the base image **php 5.6**
+  3.1. Select the base image **php** and select **5.6** from the dropdown menu
   
 ![php5.6](../images/lab_3_php5.6.png)
 
-  3.2. Give your example a speaking name and the following URL as Repo URL
+  3.2. Give your example a recognisable name and the following URL as Repo URL
   
-  ``
-  https://github.com/appuio/example-php-sti-helloworld.git
-  ``
+  ``https://github.com/agello/example-php-sti-helloworld.git``
   
 ![php5.6](../images/lab_3_example1.png)
 
@@ -65,22 +59,18 @@ You have now deployed your first application using the so-called **[Source to Im
 
 **Tip:** Use the following command to switch to another project:
 
-``
-$ oc project [projectname]
-``
+``oc project [projectname]``
 
 **Tip:** The following commands can be used to create the above example from the command line:
 
 ```
-$ oc new-app https://github.com/appuio/example-php-sti-helloworld.git --name=appuio-php-sti-example
-$ oc expose svc appuio-php-sti-example
+oc new-app https://github.com/agello/example-php-sti-helloworld.git --name=agello-php-sti-example
+oc expose svc appuio-php-sti-example
 ```
 
 **Tip:** a whole app can be deleted with the following command:
 
-```
-$ oc delete all -l app=appname
-```
+```$ oc delete all -l app=appname```
 
 For example,
 
