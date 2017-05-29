@@ -45,7 +45,7 @@ Under **Linux** and **macOS** the directory ~/bin is already in the PATH, so not
 
 If the oc client has been placed in a different directory, the PATH can be set as follows:
 
-``$ export PATH=$PATH:[path to oc client]``
+``export PATH=$PATH:[path to oc client]``
 
 ### Windows
 
@@ -64,7 +64,7 @@ Place the oc client directly in the directory *C:\Windows*.
 
 The oc client should now be installed correctly. The best way to do this is to run the following command:
 
-``$oc version``
+``oc version``
 The following output should be displayed:
 
 ``Oc v1.5.1 Kubernetes v1.xxxxx``
