@@ -40,7 +40,7 @@ The OpenShift V3 Web Console allows users to perform certain tasks directly via 
 
   3.1. Select the base image **php** and select **5.6** from the dropdown menu
   
-![php5.6](../images/lab_3_php5.6.png)
+![php5.6](../images/lab_3_php5.png)
 
   3.2. Give your example a recognisable name and the following URL as Repo URL
   
