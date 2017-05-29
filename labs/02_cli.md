@@ -21,11 +21,11 @@ Once the client has been downloaded, it must be placed on the system in a direct
 
 **Linux**
 
-``~/Bin``
+``~/bin``
 
 **macOS**
 
-``~/Bin``
+``~/bin``
 
 **Windows**
 
@@ -45,7 +45,7 @@ Under **Linux** and **macOS** the directory ~/bin is already in the PATH, so not
 
 If the oc client has been placed in a different directory, the PATH can be set as follows:
 
-``$export PATH=$PATH:[path to oc client]``
+``$ export PATH=$PATH:[path to oc client]``
 
 ### Windows
 
