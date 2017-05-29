@@ -4,7 +4,7 @@ In this lab the basic concepts of OpenShift are presented. We will also show you
 
 The terms and resources listed here are an excerpt from the official OpenShift documentation, further information about OpenShift can be found here:
 
-> Https://docs.openshift.com/container-platform/3.3/architecture/index.html
+>Https://docs.openshift.com/container-platform/3.3/architecture/index.html
 
 
 ## Basic concepts
@@ -13,25 +13,25 @@ OpenShift V3 is based on modern Open Source concepts such as Docker and Kubernet
 
 ### Docker
 
-[Docker] (https://www.docker.com/) is the open platform for developers and sysadmins and their applications. Choose the base docker images that match your technology, and OpenShift automatically builds an updated Docker container after you build it, and deploy it as you want.
+[Docker](https://www.docker.com/) is the open platform for developers and sysadmins and their applications. Choose the base docker images that match your technology, and OpenShift automatically builds an updated Docker container after you build it, and deploy it as you want.
 
 ### Kubernetes
 
-Orchestrate and manage containers with [Kubernetes] (http://kubernetes.io/) by Google. You define how many instances of your application should run in parallel, and Kubernetes takes care of the scaling, load balancing and stability.
+Orchestrate and manage containers with [Kubernetes](http://kubernetes.io/) by Google. You define how many instances of your application should run in parallel, and Kubernetes takes care of the scaling, load balancing and stability.
 
 ## Overview
 
-! [Overview] (../ images / ose3-overview.png)
+![Overview](../images/ose3-overview.png)
 
 ### Container and Docker Images
 
-The basic elements of OpenShift applications are docker containers. With docker containers, processes on a Linux system can be isolated so that they can only interact with the defined resources. This allows many different containers to run on the same system without seeing each other (files, processes, network). Typically, a container contains a single service (web server, database, mail service, cache). Within a Docker container, any processes can be executed.
+The basic elements of OpenShift applications are docker containers. With docker containers, processes on a Linux system can be isolated so that they can only interact with the defined resources. This allows many different containers to run on the same system without seeing each other (files, processes, network). Typically, a container contains a single service (web server, database, mail service, cache). Within a Docker container, any process can be executed.
 
 Docker containers are based on docker images. A docker image is a binary file that contains all the necessary components to run a single container.
 
 Docker images are created by dockerfiles (textual description of how the docker image is built step by step). Basically, docker images are hierarchically applied file system snapshots.
 
-** Example Tomcat **
+**Example Tomcat**
 - Basic Image (CentOs 7)
 - + Install Java
 - + Install Tomcat
@@ -45,7 +45,7 @@ In OpenShift V3, resources (containers and docker images, pods, services, routes
 
 Within a project, authorized users can manage and organize their own resources.
 
-The resources within a project are linked via a transparent [SDN] (https://de.wikipedia.org/wiki/Software-defined_networking). This allows the individual components of a project to be deployed to different nodes in a multi-node setup. They are visible and accessible via the SDN.
+The resources within a project are linked via a transparent [SDN](https://de.wikipedia.org/wiki/Software-defined_networking). This allows the individual components of a project to be deployed to different nodes in a multi-node setup. They are visible and accessible via the SDN.
 
 ### Pods
 
@@ -72,22 +72,18 @@ If more than one pod is deployed for a service, the routing layer distributes th
 The following protocols are currently supported:
 
 - HTTP
-- HTTPS ([SNI] (https://en.wikipedia.org/wiki/Server_Name_Indication))
+- HTTPS ([SNI](https://en.wikipedia.org/wiki/Server_Name_Indication))
 - WebSockets
-- TLS with [SNI] (https://en.wikipedia.org/wiki/Server_Name_Indication)
+- TLS with [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication)
 
 ### Templates
 
 A template describes a list of resources that can be executed on OpenShift and created accordingly in OpenShift.
 
-This way you have the possibility to describe entire infrastructures:
-
-- Java Application Service (3 Replicas, rolling Upgrade)
-- Database service
-- via the route https://java.app.appuio-beta.ch available on the Internet
+This way you have the possibility to describe entire infrastructures.
 
 ---
 
-** End Lab 1 **
+**End Lab 1**
 <p width = "100px" align = "right"> <a href="02_cli.md"> Install OpenShift CLI → </a> </p>
-[← back to overview] (../README.md)
+[← back to overview](../README.md)
