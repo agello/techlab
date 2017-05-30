@@ -25,7 +25,7 @@ To view all the projects to which you are authorized.
 
 Once the new project is created, we can deploy the Docker Image in OpenShift using the following command:
 
-``oc new-app appuio/example-spring-boot``
+``oc new-app tomcc/example-spring-boot``
 
 Output:
 
