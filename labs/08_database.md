@@ -58,7 +58,7 @@ We can now set these environment variables in the DeploymentConfig example-sprin
 
 
 ```
-SPRING_DATASOURCE_URL = jdbc: mysql://mysql/agello?AutoReconnect=true
+SPRING_DATASOURCE_URL = jdbc:mysql://mysql/agello?AutoReconnect=true
 ```
 
 **Note:** mysql solves the cluster IP of the MySQL service within its project via DNS query. The MySQL database is only available within the project. The service is also available by the following name:
