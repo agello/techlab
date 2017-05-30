@@ -142,7 +142,7 @@ MariaDB [(none)]>
 Then you can use
 
 ```
-showtables;
+show tables;
 ```
 
 Display all tables.
@@ -176,25 +176,16 @@ Log in to the MySQL Pod:
 $ oc rsh mariadb-1-b6rgb
 ```
 
-Delete existing database:
-
-```
-$ 
-...
-Mysql> drop database appuio;
-Mysql> create database appuio;
-```
-
 Insert dump:
 
 ```
-$ mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -h$MYSQL_SERVICE_HOST agello </tmp/08_dump/dump.sql
+$ mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -h$mariadb agello </tmp/08_dump/dump.sql
 ```
 
 **Note:** The dump can be created as follows:
 
 ```
-mysqldump --user=$MYSQL_USER --password=$MYSQL_PASSWORD --host=$MYSQL_SERVICE_HOST agello > /tmp/dump.sql
+mysqldump --user=$MYSQL_USER --password=$MYSQL_PASSWORD --host=mariadb agello > /tmp/dump.sql
 ```
 
 
