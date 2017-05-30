@@ -60,4 +60,5 @@ This route with the hostname is now also visible in the web console's overview.
 **End Lab 5**
 
 <p width = "100px" align = "right"> <a href="06_scale.md"> Scaling → </a> </p>
+
 [← back to overview](../README.md)
