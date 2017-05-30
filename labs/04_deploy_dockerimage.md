@@ -94,10 +94,11 @@ Now let's take a closer look at our service:
 
 ``oc get services``
 
-``
-NAME CLUSTER-IP EXTERNAL-IP PORT (S) AGE
-Example-spring-boot 172.30.124.20 <none> 8080 / TCP 2m
-``
+```
+NAME                  CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+example-spring-boot   172.30.158.17   <none>        8080/TCP   6m
+```
+
 
 As you can see on the output, our service (example-spring-boot) is accessible via an IP and port (172.30.124.20:8080) **Note:** Your IP may be different.
 
@@ -109,42 +110,42 @@ Use the following command to read additional information about the service:
 
 ```
 {
-    "Child": "service",
-    "ApiVersion": "v1",
-    "Metadata": {
-        "Name": "example-spring-boot",
-        "Namespace": "techlab",
-        "SelfLink": "/api/v1/namespaces/techlab/services/example-spring-boot",
-        "Uid": "b32d0197-347e-11e6-a2cd-525400f6ccbc",
-        "ResourceVersion": "17247237",
-        "CreationTimestamp": "2016-06-17T11: 29: 05Z",
-        "Labels": {
-            "App": "example-spring-boot"
+    "kind": "Service",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "example-spring-boot",
+        "namespace": "tomcc-dockerimage",
+        "selfLink": "/api/v1/namespaces/tomcc-dockerimage/services/example-spring-boot",
+        "uid": "5fa5fd32-452a-11e7-a461-06aef59db650",
+        "resourceVersion": "17467",
+        "creationTimestamp": "2017-05-30T11:23:15Z",
+        "labels": {
+            "app": "example-spring-boot"
         },
-        "Annotations": {
-            "Openshift.io/generated-by": "OpenShiftNewApp"
+        "annotations": {
+            "openshift.io/generated-by": "OpenShiftNewApp"
         }
     },
-    "Spec": {
-        "Ports": [
+    "spec": {
+        "ports": [
             {
-                "Name": "8080-tcp",
-                "Protocol": "TCP",
-                "Port": 8080,
-                "TargetPort": 8080
+                "name": "8080-tcp",
+                "protocol": "TCP",
+                "port": 8080,
+                "targetPort": 8080
             }
         ],
-        "Selector": {
-            "App": "example-spring-boot",
-            "Deploymentconfig": "example-spring-boot"
+        "selector": {
+            "app": "example-spring-boot",
+            "deploymentconfig": "example-spring-boot"
         },
-        "PortalIP": "172.30.124.20",
-        "ClusterIP": "172.30.124.20",
-        "Type": "ClusterIP",
-        "SessionAffinity": "None"
+        "portalIP": "172.30.158.17",
+        "clusterIP": "172.30.158.17",
+        "type": "ClusterIP",
+        "sessionAffinity": "None"
     },
-    "Status": {
-        "LoadBalancer": {}
+    "status": {
+        "loadBalancer": {}
     }
 }
 ```
@@ -154,48 +155,180 @@ You can also use the corresponding command to display the details of a pod:
 ``oc get pod example-spring-boot-3-nwzku -o json``
 
 **Note:** First, query the pod name from your project (`oc get pods`) and replace it in the upper command.
+```
+{
+    "kind": "Pod",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "example-spring-boot-1-nkhw7",
+        "generateName": "example-spring-boot-1-",
+        "namespace": "tomcc-dockerimage",
+        "selfLink": "/api/v1/namespaces/tomcc-dockerimage/pods/example-spring-boot-1-nkhw7",
+        "uid": "6178cce3-452a-11e7-a461-06aef59db650",
+        "resourceVersion": "17540",
+        "creationTimestamp": "2017-05-30T11:23:18Z",
+        "labels": {
+            "app": "example-spring-boot",
+            "deployment": "example-spring-boot-1",
+            "deploymentconfig": "example-spring-boot"
+        },
+        "annotations": {
+            "kubernetes.io/created-by": "{\"kind\":\"SerializedReference\",\"apiVersion\":\"v1\",\"reference\":{\"kind\":\"ReplicationController\",\"namespace\":\"tomcc-dockerimage\",\"name\":\"example-spring-boot-1\",\"uid\":\"6008b742-452a-11e7-a461-06aef59db650\",\"apiVersion\":\"v1\",\"resourceVersion\":\"17488\"}}\n",
+            "openshift.io/container.example-spring-boot.image.entrypoint": "[\"container-entrypoint\",\"/bin/sh\",\"-c\",\"java -Xmx64m -Xss1024k -jar /opt/app-root/springboots2idemo.jar\"]",
+            "openshift.io/deployment-config.latest-version": "1",
+            "openshift.io/deployment-config.name": "example-spring-boot",
+            "openshift.io/deployment.name": "example-spring-boot-1",
+            "openshift.io/generated-by": "OpenShiftNewApp",
+            "openshift.io/scc": "restricted"
+        }
+    },
+    "spec": {
+        "volumes": [
+            {
+                "name": "default-token-XXXXX",
+                "secret": {
+                    "secretName": "default-token-XXXXX"
+                }
+            }
+        ],
+        "containers": [
+            {
+                "name": "example-spring-boot",
+                "image": "tomcc/example-spring-boot@sha256:74e0b8a6347258d8523b14ca02bdd737cd0e11521d3ae26106cb11061cbb7c32",
+                "ports": [
+                    {
+                        "containerPort": 8080,
+                        "protocol": "TCP"
+                    }
+                ],
+                "resources": {},
+                "volumeMounts": [
+                    {
+                        "name": "default-token-XXXXXX",
+                        "readOnly": true,
+                        "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+                    }
+                ],
+                "terminationMessagePath": "/dev/termination-log",
+                "imagePullPolicy": "Always",
+                "securityContext": {
+                    "capabilities": {
+                        "drop": [
+                            "KILL",
+                            "MKNOD",
+                            "SETGID",
+                            "SETUID",
+                            "SYS_CHROOT"
+                        ]
+                    },
+                    "privileged": false,
+                    "seLinuxOptions": {
+                        "level": "s0:c8,c2"
+                    },
+                    "runAsUser": 1000060000
+                }
+            }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "nodeSelector": {
+            "role": "app"
+        },
+        "host": "ip-10-20-4-132.eu-west-1.compute.internal",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "ip-10-20-4-132.eu-west-1.compute.internal",
+        "securityContext": {
+            "seLinuxOptions": {
+                "level": "s0:c8,c2"
+            },
+            "fsGroup": 1000060000
+        },
+        "imagePullSecrets": [
+            {
+                "name": "default-dockercfg-5mbjf"
+            }
+        ]
+    },
+    "status": {
+        "phase": "Running",
+        "conditions": [
+            {
+                "type": "Initialized",
+                "status": "True",
+                "lastProbeTime": null,
+                "lastTransitionTime": "2017-05-30T11:23:18Z"
+            },
+            {
+                "type": "Ready",
+                "status": "True",
+                "lastProbeTime": null,
+                "lastTransitionTime": "2017-05-30T11:23:48Z"
+            },
+            {
+                "type": "PodScheduled",
+                "status": "True",
+                "lastProbeTime": null,
+                "lastTransitionTime": "2017-05-30T11:23:18Z"
+            }
+        ],
+        "hostIP": "10.20.4.132",
+        "podIP": "172.16.10.3",
+        "startTime": "2017-05-30T11:23:18Z",
+        "containerStatuses": [
+            {
+                "name": "example-spring-boot",
+                "state": {
+                    "running": {
+                        "startedAt": "2017-05-30T11:23:48Z"
+                    }
+                },
+                "lastState": {},
+                "ready": true,
+                "restartCount": 0,
+                "image": "tomcc/example-spring-boot@sha256:74e0b8a6347258d8523b14ca02bdd737cd0e11521d3ae26106cb11061cbb7c32",
+                "imageID": "docker-pullable://docker.io/tomcc/example-spring-boot@sha256:74e0b8a6347258d8523b14ca02bdd737cd0e11521d3ae26106cb11061cbb7c32",
+                "containerID": "docker://e6fd1c792dc28f5f1aa817ec53a3185c17ea6f6231b00249553ae4bcbc3dc60e"
+            }
+        ]
+    }
+}
+```
 
 The `selector` area in the service defines which pods (`labels`) are used as endpoints. To do so, consider the corresponding configurations of the service and pod together.
 
-``
+```
 Service:
 --------
-...
 "Selector": {
     "App": "example-spring-boot",
     "Deploymentconfig": "example-spring-boot"
 },
-
-...
-
 Pod:
-Reply with quote
-...
 "Labels": {
     "App": "example-spring-boot",
     "Deployment": "example-spring-boot-1",
     "Deploymentconfig": "example-spring-boot"
 },
-...
-
-``
+```
 
 This link can be viewed using the `oc describe` command:
 
 ``oc describe service example-spring-boot``
 
-``
-Name: example-spring-boot
-Namespace: techlab
-Labels: app = example-spring-boot
-Selector: app = example-spring-boot, deploymentconfig = example-spring-boot
-Type: ClusterIP
-IP: 172.30.124.20
-Port: 8080-tcp 8080 / TCP
-Endpoints: 10.1.3.20:8080
-Session Affinity: None
+```
+Name:			example-spring-boot
+Namespace:		tomcc-dockerimage
+Labels:			app=example-spring-boot
+Selector:		app=example-spring-boot,deploymentconfig=example-spring-boot
+Type:			ClusterIP
+IP:		     	172.30.158.17
+Port:			8080-tcp	8080/TCP
+Endpoints:		172.16.10.3:8080
+Session Affinity:	None
 No events.
-``
+```
 
 Under Endpoints, you will now find the currently running pod.
 
@@ -209,9 +342,64 @@ Use the following command to read additional information about the Image Stream:
 
 ``oc get imagestream example-spring-boot -o json``
 
+```
+{
+    "kind": "ImageStream",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "example-spring-boot",
+        "namespace": "tomcc-dockerimage",
+        "selfLink": "/oapi/v1/namespaces/tomcc-dockerimage/imagestreams/example-spring-boot",
+        "uid": "5f91c925-452a-11e7-a461-06aef59db650",
+        "resourceVersion": "17470",
+        "generation": 2,
+        "creationTimestamp": "2017-05-30T11:23:15Z",
+        "labels": {
+            "app": "example-spring-boot"
+        },
+        "annotations": {
+            "openshift.io/generated-by": "OpenShiftNewApp",
+            "openshift.io/image.dockerRepositoryCheck": "2017-05-30T11:23:15Z"
+        }
+    },
+    "spec": {
+        "tags": [
+            {
+                "name": "latest",
+                "annotations": {
+                    "openshift.io/imported-from": "tomcc/example-spring-boot"
+                },
+                "from": {
+                    "kind": "DockerImage",
+                    "name": "tomcc/example-spring-boot"
+                },
+                "generation": 2,
+                "importPolicy": {}
+            }
+        ]
+    },
+    "status": {
+        "dockerImageRepository": "172.30.87.171:5000/tomcc-dockerimage/example-spring-boot",
+        "tags": [
+            {
+                "tag": "latest",
+                "items": [
+                    {
+                        "created": "2017-05-30T11:23:15Z",
+                        "dockerImageReference": "tomcc/example-spring-boot@sha256:74e0b8a6347258d8523b14ca02bdd737cd0e11521d3ae26106cb11061cbb7c32",
+                        "image": "sha256:74e0b8a6347258d8523b14ca02bdd737cd0e11521d3ae26106cb11061cbb7c32",
+                        "generation": 2
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+
 ### DeploymentConfig
 
-The following points are defined in [DeploymentConfig] (https://docs.openshift.com/container-platform/3.3/dev_guide/deployments/how_deployments_work.html):
+The following points are defined in [DeploymentConfig](https://docs.openshift.com/container-platform/3.3/dev_guide/deployments/how_deployments_work.html):
 
 - UpdateStrategy: How are application updates executed, how is the container replaced?
 - Triggers: Which triggers lead to a deployment? In our example, ImageChange
@@ -221,14 +409,13 @@ The following points are defined in [DeploymentConfig] (https://docs.openshift.c
   - ImagePullPolicy
 - Replicas, number of pods to be deployed
 
-
 The following command can be used to read additional information about DeploymentConfig:
 
 ``oc get deploymentConfig example-spring-boot -o json``
 
 In contrast to DeploymentConfig, which tells OpenShift how an application is to be deployed, the ReplicationController defines how the application should look during the runtime (for example, 3 replicas should always run).
 
-**Tip:** for each resource type, there is also a short form. For example, you can simply write `oc get deploymentconfig` as` oc get dc`.
+**Tip:** for each resource type, there is also a short form. For example, you can simply write ``oc get deploymentconfig`` as ``oc get dc``.
 
 ---
 
