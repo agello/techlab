@@ -13,13 +13,13 @@ $ oc new-project [USER]-scale
 And add an application to the project
 
 ```
-$ oc new-app appuio/example-php-docker-helloworld --name=appuio-php-docker
+$ oc new-app https://github.com/agello/example-php-sti-helloworld.git --name=agello-php-sti-example
 ```
 
 And provide the service (expose)
 
 ```
-$ oc expose service appuio-php-docker
+$ oc expose svc agello-php-sti-example
 ```
 
 If we want to scale our Example application, we must tell our ReplicationController (rc) that we want to have 3 replicas of the image running at the same time.
@@ -28,15 +28,14 @@ Let's take a closer look at the ReplicationController (rc):
 
 ```
 $ oc get rc
-
-NAME DESIRED CURRENT AGE
-Appuio-php-docker-1 1 1 33s
+NAME                       DESIRED   CURRENT   AGE
+agello-php-sti-example-1   1         1         1m
 ```
 
 For more details:
 
 ```
-$ oc get rc appuio-php-docker-1 -o json
+$ oc get rc agello-php-sti-example-1 -o json
 ```
 
 The rc tells us how many pods we expect (spec) and how many are currently deployed (status).
@@ -45,45 +44,42 @@ The rc tells us how many pods we expect (spec) and how many are currently deploy
 Now we scale our Example application on 3 replicas:
 
 ```
-$ oc scale --replicas=3 rc appuio-php-docker-1
+$ oc scale --replicas=3 dc agello-php-sti-example-1
 ```
 
 Let us check the number of replicas on the ReplicationController:
 
 ```
 $ oc get rc
-
-NAME DESIRED CURRENT AGE
-Appuio-php-docker-1 3 3 1m
-
+NAME                       DESIRED   CURRENT   AGE
+agello-php-sti-example-1   3         3         7m
 ```
 
 And accordingly indicate the pods:
 
 ```
 $ oc get pods
-NAME READY STATUS RESTARTS AGE
-Appuio-php-docker-1-2uc89 1/1 Running 0 21s
-Appuio-php-docker-1-evcre 1/1 Running 0 21s
-Appuio-php-docker-1-tolpx 1/1 Running 0 2m
-
+NAME                             READY     STATUS      RESTARTS   AGE
+agello-php-sti-example-1-0hj9l   1/1       Running     0          59s
+agello-php-sti-example-1-build   0/1       Completed   0          9m
+agello-php-sti-example-1-c82f3   1/1       Running     0          59s
+agello-php-sti-example-1-dlkjs   1/1       Running     0          8m
 ```
 
 Finally, look at the service. This should now reference all three endpoints:
 
 ```
-$ oc describe svc appuio-php-docker
-Name: appuio-php-docker
-Namespace: techlab-scale
-Labels: app = appuio-php-docker
-Selector: app = appuio-php-docker, deploymentconfig = appuio-php-docker
-Type: ClusterIP
-IP: 172.30.166.88
-Port: 8080-tcp 8080 / TCP
-Endpoints: 10.1.3.23:8080,10.1.4.13:8080,10.1.5.15:8080
-Session Affinity: None
+$ oc describe svc agello-php-sti-example
+Name:			agello-php-sti-example
+Namespace:		tomcc-scale
+Labels:			app=agello-php-sti-example
+Selector:		app=agello-php-sti-example,deploymentconfig=agello-php-sti-example
+Type:			ClusterIP
+IP:			172.30.226.111
+Port:			8080-tcp	8080/TCP
+Endpoints:		172.16.10.6:8080,172.16.8.6:8080,172.16.8.9:8080
+Session Affinity:	None
 No events.
-
 ```
 
 Scaling pods within a service is very fast as OpenShift simply starts a new instance of the docker image as a container.
@@ -96,94 +92,32 @@ Look at the scaled application in the Web Console.
 
 ## Check interruption-free scaling
 
-Use the following command to check if your service is available while you scale up and down.
-To do this, replace `[route]` with your defined route:
+Use the browser refresh on your application to check if your service is available while you scale up and down from the web console.
 
-**Tip:** oc get route
+The requests are routed to the different pods, once you are scaled down to 1 pod, then only pod gives a response
 
-```
-while true; do sleep 1; curl -s http://[route]/pod/;date "+ TIME:%H:%M:%S,%3N"; done
-```
+What happens if we start a new deployment 
 
-Or in PowerShell (Attention: only from PowerShell version 3.0!):
+In our example, we use a very lightweight pod, so redeployment does not impact the service. Interruptions due to deployments are more pronounced if the container takes longer until it can process requests. For example, Java application of LAB 4: **Startup: 30 seconds**
 
 ```
-while (1) {
-	Start-Sleep -s 1
-	Invoke-RestMethod http: //[route]/pod/
-	Get-Date-Format "+ TIME:% H:% M:% S,% 3N"
-}
-```
-
-And scale from **3** replicas to **1**.
-The output shows the pod that processed the request:
-
-```
-POD: appuio-php-docker-6-9w9t4 TIME: 16: 40: 04.991
-POD: appuio-php-docker-6-9w9t4 TIME: 16: 40: 06,053
-POD: appuio-php-docker-6-6xg2b TIME: 16: 40: 07,091
-POD: appuio-php-docker-6-6xg2b TIME: 16: 40: 08.128
-POD: appuio-php-docker-6-ctbrs TIME: 16: 40: 09.175
-POD: appuio-php-docker-6-ctbrs TIME: 16: 40: 10.212
-POD: appuio-php-docker-6-9w9t4 TIME: 16: 40: 11.279
-POD: appuio-php-docker-6-9w9t4 TIME: 16: 40: 12.332
-POD: appuio-php-docker-6-6xg2b TIME: 16: 40: 13.369
-POD: appuio-php-docker-6-6xg2b TIME: 16: 40: 14.407
-POD: appuio-php-docker-6-6xg2b TIME: 16: 40: 15.441
-POD: appuio-php-docker-6-6xg2b TIME: 16: 40: 16.493
-POD: appuio-php-docker-6-6xg2b TIME: 16: 40: 17.543
-POD: appuio-php-docker-6-6xg2b TIME: 16: 40: 18.591
-```
-
-The requests are routed to the different pods, once you are runters scaled to a pod, then only one response
-
-What happens if we start a new deployment while the While command is running:
-
-```
-$ oc deploy appuio-php-docker --latest
-```
-In a short time, the public route does not answer
-
-```
-POD: appuio-php-docker-6-6xg2b TIME: 16: 42: 17.743
-POD: appuio-php-docker-6-6xg2b TIME: 16: 42: 18.776
-POD: appuio-php-docker-6-6xg2b TIME: 16: 42: 19.813
-POD: appuio-php-docker-6-6xg2b TIME: 16: 42: 20.853
-POD: appuio-php-docker-6-6xg2b TIME: 16: 42: 21.891
-POD: appuio-php-docker-6-6xg2b TIME: 16: 42: 22.943
-POD: appuio-php-docker-6-6xg2b TIME: 16: 42: 23.980
-# No Answer
-POD: appuio-php-docker-7-pxnr3 TIME: 16: 42: 42.134
-POD: appuio-php-docker-7-pxnr3 TIME: 16: 42: 43.181
-POD: appuio-php-docker-7-pxnr3 TIME: 16: 42: 44.226
-POD: appuio-php-docker-7-pxnr3 TIME: 16: 42: 45.259
-POD: appuio-php-docker-7-pxnr3 TIME: 16: 42: 46.297
-POD: appuio-php-docker-7-pxnr3 TIME: 16: 42: 47.571
-POD: appuio-php-docker-7-pxnr3 TIME: 16: 42: 48.606
-POD: appuio-php-docker-7-pxnr3 TIME: 16: 42: 49.645
-POD: appuio-php-docker-7-pxnr3 TIME: 16: 42: 50.684
-```
-
-In our example, we use a very lightweight pod. The behavior is more pronounced if the container takes longer until it can process requests. For example, Java application of LAB 4: **Startup: 30 seconds**
-
-```
-Pod: example-spring-boot-2-73aln TIME: 16: 48: 25,251
-Pod: example-spring-boot-2-73aln TIME: 16: 48: 26.305
-Pod: example-spring-boot-2-73aln TIME: 16: 48: 27.400
-Pod: example-spring-boot-2-73aln TIME: 16: 48: 28.463
-Pod: example-spring-boot-2-73aln TIME: 16: 48: 29.507
-<Html> <body> <h1> 503 Service Unavailable </ h1>
+pod: example-spring-boot-2-73aln TIME: 16: 48: 25,251
+pod: example-spring-boot-2-73aln TIME: 16: 48: 26.305
+pod: example-spring-boot-2-73aln TIME: 16: 48: 27.400
+pod: example-spring-boot-2-73aln TIME: 16: 48: 28.463
+pod: example-spring-boot-2-73aln TIME: 16: 48: 29.507
+<html> <body> <h1> 503 Service Unavailable </ h1>
 No server is available to handle this request.
 </ Body> </ html>
  TIME: 16: 48: 33.562
-<Html> <body> <h1> 503 Service Unavailable </ h1>
+<html> <body> <h1> 503 Service Unavailable </ h1>
 No server is available to handle this request.
 </ Body> </ html>
  TIME: 16: 48: 34.601
  ...
-Pod: example-spring-boot-3-tjdkj TIME: 16: 49: 20,114
-Pod: example-spring-boot-3-tjdkj TIME: 16: 49: 21.181
-Pod: example-spring-boot-3-tjdkj TIME: 16: 49: 22.231
+pod: example-spring-boot-3-tjdkj TIME: 16: 49: 20,114
+pod: example-spring-boot-3-tjdkj TIME: 16: 49: 21.181
+pod: example-spring-boot-3-tjdkj TIME: 16: 49: 22.231
 
 ```
 
@@ -194,9 +128,9 @@ The following chapter describes how to configure your services to enable uninter
 
 ## Interruption-free deployment using Readiness Probe and Rolling Update
 
-The update strategy [Rolling] (https://docs.openshift.com/container-platform/3.3/dev_guide/deployments/deployment_strategies.html#rolling-strategy) allows interruption-free deployments. This will start the new version of the application as soon as the application is ready, Request will be routed to the new pod, and the old version will be undeployed.
+The update strategy [Rolling](https://docs.openshift.com/container-platform/3.3/dev_guide/deployments/deployment_strategies.html#rolling-strategy) allows interruption-free deployments. This will start the new version of the application as soon as the application is ready, Request will be routed to the new pod, and the old version will be undeployed.
 
-In addition, using [Container Health Checks] (https://docs.openshift.com/container-platform/3.3/dev_guide/application_health.html), the deployed application of the platform can provide detailed feedback on its current state.
+In addition, using [Container Health Checks](https://docs.openshift.com/container-platform/3.3/dev_guide/application_health.html), the deployed application of the platform can provide detailed feedback on its current state.
 
 Basically, there are two checks that can be implemented:
 
@@ -213,7 +147,7 @@ http://[route]/health/
 
 ## Task: LAB6.3
 
-In the Deployment Config (dc), in the Rolling Update Strategy section, you define that the app should always be available during an update: `maxUnavailable: 0%`
+In the Deployment Config (dc), in the Rolling Update Strategy section, you define that the app should always be available during an update: ``maxUnavailable: 0%``
 
 This can be configured in the Deployment Config (dc):
 
@@ -236,13 +170,13 @@ Spec:
 The Deployment Config can be edited via Web Console (Applications → Deployments → example-php-docker-helloworld, edit) or directly via `oc`.
 
 ```
-$ oc edit dc appuio-php-docker
+$ oc edit dc agello-php-sti-example
 ```
 
 Or edit in JSON format:
 
 ```
-$ oc edit dc appuio-php-docker -o json
+$ oc edit dc agello-php-sti-example -o json
 ```
 
 ** json **
@@ -268,102 +202,35 @@ Spec->template->spec->containers under *resources: {}*
 **YAML:**
 
 ```
-...
-          Resources: {}
-          ReadinessProbe:
-            HttpGet:
-              Path: /health/
-              Port: 8080
-              Scheme: HTTP
-            InitialDelaySeconds: 10
-            TimeoutSeconds: 1
-...
+      - image: 172.30.87.171:5000/tomcc-scale/agello-php-sti-example@sha256:5e7d2b47e6cab2cf30be06fe8ee0ca72520a9d3be3a81c64835fb9bb5996c792
+        imagePullPolicy: Always
+        name: agello-php-sti-example
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
 ```
 
-**json:**
 
-```
-...
-                        "Resources": {},
-                        "ReadinessProbe": {
-                            "HttpGet": {
-                                "Path": "/health/",
-                                "Port": 8080,
-                                "Scheme": "HTTP"
-                            },
-                            "InitialDelaySeconds": 10,
-                            "TimeoutSeconds": 1
-                        },
-...
-```
 
 Adjust this accordingly as above.
 
-The configuration under Container must then look as follows:
-**YAML:**
+Verify during a deployment of the application whether an update of the application now runs without interruption through the web console:
 
-```
-      Containers:
-        -
-          Name: example-php-docker-helloworld
-          Image: 'appuio/example-php-docker-helloworld @ sha256: 6a19d4a1d868163a402709c02af548c80635797f77f25c0c391b9ce8cf9a56cf'
-          Ports:
-            -
-              ContainerPort: 8080
-              Protocol: TCP
-          Resources: {}
-          ReadinessProbe:
-            HttpGet:
-              Path: /health/
-              Port: 8080
-              Scheme: HTTP
-            InitialDelaySeconds: 10
-            TimeoutSeconds: 1
-          TerminationMessagePath: /dev/termination-log
-          ImagePullPolicy: IfNotPresent
-```
-
-**json:**
-```
-                "Containers": [
-                    {
-                        "Name": "appuio-php-docker",
-                        "Image": "appuio/example-php-docker-helloworld@sha256: 9e927f9d6b453f6c58292cbe79f08f5e3db06ac8f0420e22bfd50c750898c455",
-                        "Ports": [
-                            {
-                                "ContainerPort": 8080,
-                                "Protocol": "TCP"
-                            }
-                        ],
-                        "Resources": {},
-                        "ReadinessProbe": {
-                            "HttpGet": {
-                                "Path": "/health/",
-                                "Port": 8080,
-                                "Scheme": "HTTP"
-                            },
-                            "InitialDelaySeconds": 10,
-                            "TimeoutSeconds": 1
-                        },
-                        "TerminationMessagePath": "/dev/termination-log",
-                        "ImagePullPolicy": "Always"
-                    }
-                ],
-```
-
-
-Verify during a deployment of the application whether an update of the application now runs without interruption:
-
-Once per second a request:
-
-```
-while true; do sleep 1; curl -s http://[route]/pod/; date "+ TIME:%H:%M:%S,%3N"; done
-```
 
 Starting Deployment:
 
 ```
-$ oc deploy appuio-php-docker --latest
+$ oc deploy agello-php-sti-example --latest
 ```
 
 
@@ -371,7 +238,7 @@ $ oc deploy appuio-php-docker --latest
 
 Through the Replication Controller, we have now told the platform that **n** replicas are to run. What happens if we delete a pod?
 
-Use `oc get pods` to find a pod in the status "running ", which you can * kill *.
+Use ``oc get pods`` to find a pod in the status "running", which you can *kill*.
 
 Start the following command in a separate terminal (display the changes to pods)
 
@@ -382,7 +249,7 @@ oc get pods -w
 In the other terminal, delete a pod with the following command
 
 ```
-oc delete pod appuio-php-docker-3-788j5
+oc delete pod agello-php-sti-example-3-q4vz9
 ```
 
 OpenShift ensures that again **n** replicas of the mentioned pod are running.
@@ -393,4 +260,5 @@ OpenShift ensures that again **n** replicas of the mentioned pod are running.
 **End Lab 6**
 
 <p width = "100px" align = "right"> <a href="07_troubleshooting_ops.md"> Troubleshooting what is in the pod? → </a> </p>
-[← back to overview] (../README.md)
+
+[← back to overview](../README.md)
