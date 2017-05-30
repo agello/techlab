@@ -28,33 +28,32 @@ Once the new project is created, we can deploy the Docker Image in OpenShift usi
 ``oc new-app tomcc/example-spring-boot``
 
 Output:
+```
+--> Found Docker image 0573eff (25 hours old) from Docker Hub for "tomcc/example-spring-boot"
 
-``
--> Found Docker image d790313 (3 weeks old) from Docker for "appuio/example-spring-boot"
-
-    APPUiO Springboot App
-    As shown in Fig.
-    Example Springboot App
+    Agello Spring Boot App 
+    ---------------------- 
+    Example Spring Boot App
 
     Tags: builder, springboot
 
-    * An image stream will be created as "example-spring-boot: latest" that will track this image
+    * An image stream will be created as "example-spring-boot:latest" that will track this image
     * This image will be deployed in deployment config "example-spring-boot"
-    * Port 8080 / tcp will be load balanced by service "example-spring-boot"
-      * Other containers can access this service by the hostname "example-spring-boot"
+    * Port 8080/tcp will be load balanced by service "example-spring-boot"
+      * Other containers can access this service through the hostname "example-spring-boot"
 
--> Creating resources with label app = example-spring-boot ...
-    Imagestream "example-spring-boot" created
-    Deploymentconfig "example-spring-boot" created
-    Service "example-spring-boot" created
--> Success
+--> Creating resources with label app=example-spring-boot ...
+    imagestream "example-spring-boot" created
+    deploymentconfig "example-spring-boot" created
+    service "example-spring-boot" created
+--> Success
     Run 'oc status' to view your app.
-``
+```
 
-For our Lab we use an APPUiO example (Java SpringBoot application):
+For our Lab we use an Agello example (Java SpringBoot application):
 
-- Docker Hub: https://hub.docker.com/r/appuio/example-spring-boot/
-- GitHub (Source): https://github.com/appuio/example-spring-boot-helloworld
+- Docker Hub: https://hub.docker.com/r/tomcc/example-spring-boot/
+- GitHub (Source): https://github.com/agello/example-spring-boot-helloworld
 
 OpenShift provides the necessary resources, in this case Docker Hub downloads Docker Hub and then deployes the appropriate pod.
 
