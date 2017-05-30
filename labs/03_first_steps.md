@@ -63,10 +63,10 @@ You have now deployed your first application using the so-called **[Source to Im
 
 **Tip:** The following commands can be used to create the above example from the command line:
 
-``
+```
 oc new-app https://github.com/agello/example-php-sti-helloworld.git --name=agello-php-sti-example
-oc expose svc appuio-php-sti-example
-``
+oc expose svc agello-php-sti-example
+```
 
 **Tip:** a whole app can be deleted with the following command:
 
@@ -74,7 +74,7 @@ oc expose svc appuio-php-sti-example
 
 For example,
 
-``oc delete all -l app=appuio-php-sti-example``
+``oc delete all -l app=agello-php-sti-example``
 
 ---
 
