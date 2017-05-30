@@ -32,7 +32,7 @@ The OpenShift V3 Web Console allows users to perform certain tasks directly via 
 ## Task: LAB3.2
 1. Log on to the Lab platform using the Web Console.
 
-  **Note:** The **URL**, user name and password for your account will be provided to you by Techlab by the Instructor.
+  **Note:** The **URL**, user name and password for your account will be provided to you by the Instructor.
 
 1. Now go to the overview of your newly created project. Currently the project is still empty.
 
