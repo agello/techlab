@@ -91,7 +91,10 @@ From now, all pushes on your GitHub repository triggers a build and then deploy 
 
 ## Task: LAB9.3: Adjust the code
 
-Now edit the code in your forked repo any way you like. The fastest method is totthe code directly in your browser
+Now edit the code in your forked repo any way you like. The fastest method is totthe code directly in your browser;
+For example, edit the index.html of the java app to display something else;
+
+https://github.com/[YOURGITHUBUSERNAME]/example-spring-boot-helloworld/blob/master/src/main/resources/static/index.html
 
 Once you've pasted the changes, OpenShift starts a build of the new source code
 ```
@@ -111,27 +114,25 @@ To run a rollback, you need the name of the DeploymentConfig:
 ```
 $ oc get dc
 
-NAME TRIGGERS LATEST
-Appuio-php-docker-ex ConfigChange, ImageChange 2
+NAME                 REVISION   DESIRED   CURRENT   TRIGGERED BY
+agello-java-docker   2          1         1         config,image(agello-java-docker:latest)
 
 ```
 
 Use the following command to roll back to the previous version:
 
 ```
-$ oc rollback appuio-php-docker-ex
-# 3 rolled back to appuio-php-docker-ex-1
-Warning: the following images were disabled: appuio-php-docker-ex
-  You can re-enable them with: oc deploy appuio-php-docker-ex -enable-triggers -n phptest
+$ oc rollback agello-java-docker
+#3 rolled back to agello-java-docker-1
+Warning: the following images triggers were disabled: agello-java-docker:latest
+  You can re-enable them with: oc deploy agello-java-docker --enable-triggers -n example4
 ```
-
-Once the old version has been deployed, you can use its browser to check whether the original header **Hello APPUiO** is displayed again.
 
 **Tip:** The automatic deployments of new versions are now switched off for this application to prevent unintentional changes after the rollback. To turn automatic deployment back on, run the following command:
 
 
 ```
-$ oc deploy appuio-php-docker-ex -enable-triggers
+$ oc deploy agello-java-docker --enable-triggers
 ```
 
 ---
@@ -139,4 +140,5 @@ $ oc deploy appuio-php-docker-ex -enable-triggers
 **End Lab 9**
 
 <p width = "100px" align = "right"> <a href="10_persistent_storage.md"> Connect and use persistent storage for database → </a> </p>
-[← back to overview] (../README.md)
+
+[← back to overview](../README.md)
