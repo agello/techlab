@@ -28,11 +28,5 @@ This Techlab is based on OpenShift V3.3.
 
 - [OpenShift V3.3 docs](https://docs.openshift.com/container-platform/3.3/welcome/index.html)
 
-### Agello Examples
-
-- [Agello PHP Source to image hello World Example](https://github.com/appuio/example-php-sti-helloworld)
-- [Agello PHP Dockerbuild hello World Example](https://github.com/appuio/example-php-docker-helloworld)
-- [Agello Cron Job Example](https://github.com/appuio/example-cron-traditional)
-
 ### OpenShift Examples
 - [OpenShift Creating New Applications Docs](https://docs.openshift.com/container-platform/3.3/dev_guide/new_app.html)
