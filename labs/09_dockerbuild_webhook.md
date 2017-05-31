@@ -11,9 +11,9 @@ In order to make changes to the source code of our example application, you need
 
 ### Search for example project
 
-**Sample project:** https://github.com/agello/example-php-docker-helloworld
+**Sample project:** https://github.com/agello/example-spring-boot-helloworld
 
-Go to the [GitHub Project page] (https://github.com/agello/example-php-docker-helloworld) and [fork] (https://help.github.com/articles/fork-a-repo/) the project.
+Go to the [GitHub Project page] (https://github.com/agello/example-spring-boot-helloworld) and [fork] (https://help.github.com/articles/fork-a-repo/) the project.
 
 You now have
 ```
@@ -32,13 +32,13 @@ $ oc new-project [USER]-example4
 Create a new app for your fork. **Note:** Replace `[YourGithubUser]` with the name of your GitHub account:
 
 ```
-$ oc new-app https://github.com/[YourGithubUser]/example-php-docker-helloworld.git --strategy=docker --name=agello-php-docker-ex
+$ oc new-app https://github.com/agello/example-spring-boot-helloworld.git --strategy=docker --name=agello-java-docker
 ```
 By means of the parameter `--strategy=docker`, we explicitly tell the `oc new-app` command to look for a Dockerfile in the specified Git repository and use it for the build.
 
 Now expose the service with:
 ```
-$ oc expose service appuio-php-docker-ex
+$ oc expose service agello-java-docker
 ```
 
 ## Task: LAB9.2: Set up web hook on GitHub
@@ -46,24 +46,8 @@ $ oc expose service appuio-php-docker-ex
 When creating the app, BuildConfig (bc) directly defined webhooks. You can do this by using the following command:
 
 ```
-$ oc describe bc appuio-php-docker-ex
+$ oc describe bc agello-java-docker
 
-Name: appuio-php-docker-ex
-Created: 57 seconds ago
-Labels: app = appuio-php-docker-ex
-Annotations: openshift.io/generated-by=OpenShiftNewApp
-Latest version: 1
-
-Strategy: Docker
-URL: https://github.com/appuio/example-php-docker-helloworld.git
-From Image: ImageStreamTag php-56-centos7: latest
-Output to: ImageStreamTag appuio-php-docker-ex: latest
-Triggered by: Config, ImageChange
-Webhook Generic: https://master.appuio-beta.ch:443/oapi/v1/namespaces/techlab-example4/buildconfigs/appuio-php-docker-ex/webhooks/EqEq18JtxaY3vG2zvPSU/generic
-WebHook GitHub: https://master.appuio-beta.ch:443/oapi/v1/namespaces/techlab-example4/buildconfigs/appuio-php-docker-ex/webhooks/hqQ3h1CzUGIXvWqjiV-G/github
-
-Build Status Duration Creation Time
-Appuio-php-docker-ex-1 run for 56s 2016-06-17 16:56:34 +0200 CEST
 
 
 ```
