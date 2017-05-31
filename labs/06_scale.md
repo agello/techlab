@@ -96,9 +96,9 @@ Use the browser refresh on your application to check if your service is availabl
 
 The requests are routed to the different pods, once you are scaled down to 1 pod, then only pod gives a response
 
-What happens if we start a new deployment 
+What happens if we start a new deployment?
 
-In our example, we use a very lightweight pod, so redeployment does not impact the service. Interruptions due to deployments are more pronounced if the container takes longer until it can process requests. For example, Java application of LAB 4: **Startup: 30 seconds**
+In our example, we use a very lightweight pod, so redeployment does not impact the service. Interruptions due to deployments are more pronounced if the container takes longer until it can process requests. For example, the Java application from LAB 4: has a startuptime of at least **30 seconds**
 
 ```
 pod: example-spring-boot-2-73aln TIME: 16: 48: 25,251
