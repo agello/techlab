@@ -179,7 +179,7 @@ $ oc rsh mariadb-1-b6rgb
 Insert dump:
 
 ```
-$ mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -h$mariadb agello </tmp/08_dump/dump.sql
+$ mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -hmariadb agello </tmp/08_dump/dump.sql
 ```
 
 **Note:** The dump can be created as follows:
