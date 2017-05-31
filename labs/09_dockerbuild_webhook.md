@@ -11,12 +11,9 @@ In order to make changes to the source code of our example application, you need
 
 ### Search for example project
 
-**Sample project:** https://github.com/appuio/example-php-docker-helloworld
+**Sample project:** https://github.com/agello/example-php-docker-helloworld
 
-Go to the [GitHub Project page] (https://github.com/appuio/example-php-docker-helloworld) and [fork] (https://help.github.com/articles/fork-a-repo/) the project.
-
-![Fork](../images/lab_9_fork_example.png)
-
+Go to the [GitHub Project page] (https://github.com/agello/example-php-docker-helloworld) and [fork] (https://help.github.com/articles/fork-a-repo/) the project.
 
 You now have
 ```
@@ -35,7 +32,7 @@ $ oc new-project [USER]-example4
 Create a new app for your fork. **Note:** Replace `[YourGithubUser]` with the name of your GitHub account:
 
 ```
-$ oc new-app https://github.com/[YourGithubUser]/example-php-docker-helloworld.git --strategy=docker --name=appuio-php-docker-ex
+$ oc new-app https://github.com/[YourGithubUser]/example-php-docker-helloworld.git --strategy=docker --name=agello-php-docker-ex
 ```
 By means of the parameter `--strategy=docker`, we explicitly tell the `oc new-app` command to look for a Dockerfile in the specified Git repository and use it for the build.
 
