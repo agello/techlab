@@ -126,7 +126,7 @@ $ oc rsh mariadb-1-b6rgb
 
 Now you can connect to the database using mysql tool and display the tables:
 ```
-sh-4.2$ mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -h$MYSQL_SERVICE_HOST agello
+sh-4.2$ mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -hmariadb agello
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 226
 Server version: 10.1.19-MariaDB MariaDB Server
