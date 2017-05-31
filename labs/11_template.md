@@ -43,10 +43,10 @@ $ oc new-app example-spring-boot
 -> Deploying template example-spring-boot for "example-spring-boot"
      With parameters:
       APPLICATION_DOMAIN =
-      MYSQL_DATABASE_NAME = appuio
-      MYSQL_USER = appuio
-      MYSQL_PASSWORD = appuio
-      MYSQL_DATASOURCE = jdbc: mysql: // mysql / appuio? AutoReconnect = true
+      MYSQL_DATABASE_NAME = agello
+      MYSQL_USER = agello
+      MYSQL_PASSWORD = agello
+      MYSQL_DATASOURCE = jdbc:mysql://mysql/agello?AutoReconnect=true
       MYSQL_DRIVER = com.mysql.jdbc.Driver
 -> Creating resources ...
     Imagestream "example-spring-boot" created
