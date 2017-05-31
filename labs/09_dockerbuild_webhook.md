@@ -91,48 +91,14 @@ From now, all pushes on your GitHub repository triggers a build and then deploy 
 
 ## Task: LAB9.3: Adjust the code
 
-Clone your Git repository and change to the code directory:
-```
-$ git clone https://github.com/[YourGithubUser]/example-php-docker-helloworld.git
-$ cd example-php-docker-helloworld
-```
-
-For example, adjust the file on line 56 ./app/index.php:
-
-```
-$ vim app/index.php
-```
-
-![Github Webhook](../images/lab_9_codechange1.png)
-
-```
-    <div class = "container">
-
-      <div class = "starter-template">
-        <h1> Hi <?php echo 'OpenShift Techlab'?> </h1>
-        <p class = "lead"> APPUiO Example Dockerfile PHP </p>
-      </div>
-
-    </div>
-```
-
-Push your Change:
-
-```
-$ git add.
-$ git commit -m "updated Hello"
-$ git push
-```
-
-Alternatively, you can edit the file directly on GitHub:
-![Github Webhook](../images/lab_9_edit_on_github.png)
+Now edit the code in your forked repo any way you like. The fastest method is totthe code directly in your browser
 
 Once you've pasted the changes, OpenShift starts a build of the new source code
 ```
 $ oc get builds
 ```
 
-And then deployed the change.
+And then deployes the change.
 
 ## Task: LAB9.4: Rollback
 
