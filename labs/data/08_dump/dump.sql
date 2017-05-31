@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.26, for Linux (x86_64)
+-- MySQL dump 10.16  Distrib 10.1.19-MariaDB, for Linux (x86_64)
 --
--- Host: 172.30.251.42    Database: appuio
+-- Host: mariadb    Database: mariadb
 -- ------------------------------------------------------
--- Server version	5.6.26
+-- Server version	10.1.19-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -45,7 +45,7 @@ CREATE TABLE `DATABASECHANGELOG` (
 
 LOCK TABLES `DATABASECHANGELOG` WRITE;
 /*!40000 ALTER TABLE `DATABASECHANGELOG` DISABLE KEYS */;
-INSERT INTO `DATABASECHANGELOG` VALUES ('1-createTableHello','appuio','classpath:/db/changelog/db.changelog-master.xml','2016-05-16 16:09:53',1,'EXECUTED','7:8c8aeb9c1a4d95f689e5d7294e59c1bd','createTable','',NULL,'3.4.2',NULL,NULL),('2-initialdata','appuio','db/changelog/initialdata/initialdata.xml','2016-05-16 16:09:53',2,'EXECUTED','7:9fce892573b2cd006863ec69301865db','insert','',NULL,'3.4.2',NULL,NULL);
+INSERT INTO `DATABASECHANGELOG` VALUES ('1-createTableHello','appuio','classpath:/db/changelog/db.changelog-master.xml','2017-05-31 07:53:26',1,'EXECUTED','7:8c8aeb9c1a4d95f689e5d7294e59c1bd','createTable','',NULL,'3.4.2',NULL,NULL),('2-initialdata','appuio','db/changelog/initialdata/initialdata.xml','2017-05-31 07:53:26',2,'EXECUTED','7:9fce892573b2cd006863ec69301865db','insert','',NULL,'3.4.2',NULL,NULL);
 /*!40000 ALTER TABLE `DATABASECHANGELOG` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,7 +88,7 @@ CREATE TABLE `hello` (
   `frontend` varchar(50) DEFAULT NULL,
   `created` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COMMENT='A String';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COMMENT='A String';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +97,7 @@ CREATE TABLE `hello` (
 
 LOCK TABLES `hello` WRITE;
 /*!40000 ALTER TABLE `hello` DISABLE KEYS */;
-INSERT INTO `hello` VALUES (1,'Test',NULL,NULL),(2,'APPUiO','example-spring-boot-2-f2jsi','2016-05-17 00:10:46'),(3,'Puzzle','example-spring-boot-2-f2jsi','2016-05-17 00:10:52'),(4,'Bern','example-spring-boot-2-f2jsi','2016-05-17 00:10:58'),(5,'Zürich','example-spring-boot-2-f2jsi','2016-05-17 00:11:02'),(6,'CH','example-spring-boot-2-f2jsi','2016-05-17 00:11:06'),(7,'APPUiO','example-spring-boot-2-f2jsi','2016-05-17 00:11:38'),(8,'Puzzle','example-spring-boot-2-f2jsi','2016-05-17 00:12:00');
+INSERT INTO `hello` VALUES (1,'Test',NULL,NULL),(2,'This','example-spring-boot-2-79zwb','2017-05-31 07:54:03'),(3,'is','example-spring-boot-2-79zwb','2017-05-31 07:54:07'),(4,'working!','example-spring-boot-2-79zwb','2017-05-31 07:54:11'),(5,'Huzzah','example-spring-boot-2-79zwb','2017-05-31 07:54:18');
 /*!40000 ALTER TABLE `hello` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -110,4 +110,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-16 16:17:42
+-- Dump completed on 2017-05-31  7:57:01
