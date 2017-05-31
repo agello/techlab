@@ -108,7 +108,7 @@ OpenShift 3 allows you to forward any ports from the development workstation to 
 Activity: Access the Springboot Metrics from [Lab 4](04_deploy_dockerimage.md).
 
 ```
-$ oc get po 
+$ oc get pod 
 NAME                          READY     STATUS    RESTARTS   AGE
 example-spring-boot-1-nkhw7   1/1       Running   0          1h
 $ oc port-forward example-spring-boot-1-nkhw7 9000:9000 
