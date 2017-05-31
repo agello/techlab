@@ -94,7 +94,7 @@ Look at the scaled application in the Web Console.
 
 Use the browser refresh on your application to check if your service is available while you scale up and down from the web console.
 
-The requests are routed to the different pods, once you are scaled down to 1 pod, then only pod gives a response
+The requests are routed to the different pods, once you are scaled down to 1 pod, then only one pod gives a response
 
 What happens if we start a new deployment?
 
