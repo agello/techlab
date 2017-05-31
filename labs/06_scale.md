@@ -29,13 +29,13 @@ Let's take a closer look at the ReplicationController (rc):
 ```
 $ oc get rc
 NAME                       DESIRED   CURRENT   AGE
-agello-php-sti-example-1   1         1         1m
+agello-php-sti-example     1         1         1m
 ```
 
 For more details:
 
 ```
-$ oc get rc agello-php-sti-example-1 -o json
+$ oc get rc agello-php-sti-example   -o json
 ```
 
 The rc tells us how many pods we expect (spec) and how many are currently deployed (status).
@@ -44,7 +44,7 @@ The rc tells us how many pods we expect (spec) and how many are currently deploy
 Now we scale our Example application on 3 replicas:
 
 ```
-$ oc scale --replicas=3 dc agello-php-sti-example-1
+$ oc scale --replicas=3 dc agello-php-sti-example
 ```
 
 Let us check the number of replicas on the ReplicationController:
@@ -52,7 +52,7 @@ Let us check the number of replicas on the ReplicationController:
 ```
 $ oc get rc
 NAME                       DESIRED   CURRENT   AGE
-agello-php-sti-example-1   3         3         7m
+agello-php-sti-example   3         3         7m
 ```
 
 And accordingly indicate the pods:
