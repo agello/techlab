@@ -19,7 +19,7 @@ $ oc get template -n openshift
 
 Using the Web Console, this can be done via "Add to Project". This functionality allows templates to be directly instantiated.
 
-These templates can be stored in Jons format in the Git repository next to their source code, as well as via a URL called or even locally stored in the filesystem.
+These templates can be stored in json format in the Git repository next to their source code, as well as via a URL called or even locally stored in the filesystem.
 
 ## Task: LAB11.1: Instance Template.
 
@@ -32,7 +32,7 @@ $ oc new-project [USER]-template
 Create template
 
 ```
-$ oc create -f https://raw.githubusercontent.com/appuio/example-spring-boot-helloworld/master/example-spring-boot-template.json
+$ oc create -f https://raw.githubusercontent.com/agello/example-spring-boot-helloworld/master/example-spring-boot-template.json
 ```
 
 Template (Replace `[project]` with `[USER]-template`)
@@ -62,6 +62,10 @@ $ oc new-app example-spring-boot
 
 By means of:
 ```
+oc deploy mysql --latest
+```
+and 
+```
 oc deploy example-spring-boot --latest
 ```
 
@@ -72,7 +76,7 @@ OpenShift then starts a build and deployes the containers as specified in the te
 To conclude this lab you can still see the template
 
 ```
-https://github.com/appuio/example-spring-boot-helloworld/blob/master/example-spring-boot-template.json
+https://github.com/agello/example-spring-boot-helloworld/blob/master/example-spring-boot-template.json
 ```
 
 
@@ -80,7 +84,7 @@ https://github.com/appuio/example-spring-boot-helloworld/blob/master/example-spr
 For example,
 
 ```
-oc export is, bc, dc, route, service --as-template=example-spring-boot -o json> example-spring-boot-template.json
+oc export is,bc,dc,route,service --as-template=example-spring-boot -o json> example-spring-boot-template.json
 ```
 
 It is important that the Imagestreams are defined at the top in the template file. Otherwise, the first build will not work.
@@ -90,4 +94,5 @@ It is important that the Imagestreams are defined at the top in the template fil
 ** End Lab 11 **
 
 <p width = "100px" align = "right"> <a href="12_template_creation.md"> Create your own templates → </a> </p>
-[← back to overview] (../README.md)
+
+[← back to overview](../README.md)
