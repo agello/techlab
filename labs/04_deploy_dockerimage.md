@@ -76,7 +76,7 @@ Depending on the Internet connection or whether the image has already been downl
 
 ## Viewing the created resources
 
-When we first executed `oc new-app appuio/example-spring-boot`, OpenShift created some resources for us in the background. These are required to deploy this docker image:
+When we first executed `oc new-app tomcc/example-spring-boot`, OpenShift created some resources for us in the background. These are required to deploy this docker image:
 
 - [Service](https://docs.openshift.com/container-platform/3.3/architecture/core_concepts/pods_and_services.html#services)
 - [ImageStream](https://docs.openshift.com/container-platform/3.3/architecture/core_concepts/builds_and_image_streams.html#image-streams)
