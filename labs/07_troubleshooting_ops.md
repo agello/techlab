@@ -4,7 +4,11 @@ This lab will show you how to deal with errors and troubleshooting, and which to
 
 ## Log in to container
 
-We use the project from [Lab 4](04_deploy_dockerimage.md) `[USER]-dockerimage`
+We use the project from [Lab 4](04_deploy_dockerimage.md). First switch to the project `[USER]-dockerimage`:
+
+```
+$ oc project [USER]-dockerimage
+```
 
 Running containers are treated as unalterable infrastructure and should not be modified in general. However, there are usecases where you have to log into the containers. For example, for debugging and analysis.
 
