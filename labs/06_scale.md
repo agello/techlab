@@ -152,6 +152,8 @@ In the Deployment Config (dc), in the Rolling Update Strategy section, you defin
 
 This can be configured in the Deployment Config (dc):
 
+The Deployment Config can be edited via Web Console (Applications → Deployments → example-php-docker-helloworld, edit) or directly via `oc`. **TIP: the gui makes this very easy, editing through the commandline is for advanced users**
+
 **YAML:**
 ```
 ...
@@ -168,7 +170,7 @@ Spec:
 ...
 ```
 
-The Deployment Config can be edited via Web Console (Applications → Deployments → example-php-docker-helloworld, edit) or directly via `oc`. **TIP: the gui makes this very easy, editing through the commandline is for advanced users**
+
 
 ```
 $ oc edit dc agello-php-sti-example
