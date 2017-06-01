@@ -15,6 +15,7 @@ And add an application to the project
 ```
 $ oc new-app https://github.com/agello/example-php-sti-helloworld.git --name=agello-php-sti-example
 ```
+**tip** Use 'oc get pod' to get a feel for how far along the deployment is.
 
 And provide the service (expose)
 
