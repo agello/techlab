@@ -149,12 +149,10 @@ Use the following command to read additional information about the service:
     }
 }
 ```
+First, query the pod name from your project (`oc get pods`) , then use the corresponding command to display the details of a pod:
 
-You can also use the corresponding command to display the details of a pod:
+``oc get pod example-spring-boot-[UNIQUE_ID] -o json``
 
-``oc get pod example-spring-boot-3-nwzku -o json``
-
-**Note:** First, query the pod name from your project (`oc get pods`) and replace it in the upper command.
 ```
 {
     "kind": "Pod",
