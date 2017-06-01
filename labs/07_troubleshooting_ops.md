@@ -95,7 +95,7 @@ The `-f` parameter has the same behavior as `tail -f`
 If a pod is in the status **CrashLoopBackOff**, this means that it could not be started successfully even after repeated restarts. The logfiles can be displayed even if the pod is not running with the following command.
 
 ```
-$ oc logs -p [POD]
+$ oc logs -f [POD]
 ```
 
 With OpenShift an EFK (Elasticsearch, Fluentd, Kibana) stack is delivered, which collects, rotates and aggregates all log files. Kibana allows logs to be searched, filtered and graphically edited. For more information and an optional LAB, please see [here](../additional-labs/logging_efk_stack.md).
