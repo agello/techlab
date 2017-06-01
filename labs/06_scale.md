@@ -143,7 +143,7 @@ These two checks can be implemented as HTTP Check, Container Execution Check (Sh
 In our example, the platform application is to say whether it is ready for requests. For this, we use the Readiness Probe. Our example application returns a status code 200 on port 9000 (management port of the spring application) as soon as the application is ready.
 
 ```
-http://[route]/health/
+http://[route]/health
 ```
 
 ## Task: LAB6.3
