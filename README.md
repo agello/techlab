@@ -12,7 +12,7 @@ This Techlab is based on OpenShift V3.3.
 4. [Deploy a Docker Image](labs/04_deploy_dockerimage.md)
 5. [Create Routes](labs/05_create_route.md)
 6. [Scaling](labs/06_scale.md)
-7. [Troubleshooting, what is in the pod?](Labs/07_troubleshooting_ops.md)
+7. [Troubleshooting, what is in the pod?](labs/07_troubleshooting_ops.md)
 8. [Deploy and mount the database](labs/08_database.md)
 9. [Directly integrate code changes via webhook](labs/09_dockerbuild_webhook.md)
 10. [Connect and use persistent storage for database](labs/10_persistent_storage.md)
