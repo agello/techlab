@@ -32,7 +32,7 @@ $ oc new-project [USER]-example4
 Create a new app for your fork. **Note:** Replace `[YourGithubUser]` with the name of your GitHub account:
 
 ```
-$ oc new-app https://github.com/agello/example-spring-boot-helloworld.git --strategy=docker --name=agello-java-docker
+$ oc new-app https://github.com/[YourGithubUser]/example-spring-boot-helloworld.git --strategy=docker --name=agello-java-docker
 ```
 By means of the parameter `--strategy=docker`, we explicitly tell the `oc new-app` command to look for a Dockerfile in the specified Git repository and use it for the build.
 
