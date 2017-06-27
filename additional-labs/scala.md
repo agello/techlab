@@ -29,7 +29,7 @@ Now clone the agello repository containing a sample play application. The reposi
 
 Now it is time to deploy the sample app. Do this with the following command:
 
-oc new-app https://github/**[GITHUBUSERNAME]**/s2i-scala --contextdir=java8 --strategy=docker --name=scala
+oc new-app https://github/**GITHUBUSERNAME**/s2i-scala --contextdir=java8 --strategy=docker --name=scala
 
 ``$ oc new-app https://github.com/agello/s2i-scala/ --context-dir=java8  --strategy=docker --name=scala``
 
@@ -67,7 +67,7 @@ Now make a change in your code to change the default message.
 
 The following file contains the message:
 
-https://github.com/**[GITHUBUSERNAME]**/s2i-scala/blob/master/java8/test/test-app/app/controllers/HomeController.scala
+https://github.com/**GITHUBUSERNAME**/s2i-scala/blob/master/java8/test/test-app/app/controllers/HomeController.scala
 
 Since you made a fork to this repo you have the same repo in your account. Now change the message in the HomeController.scala and redeploy the app.
 
