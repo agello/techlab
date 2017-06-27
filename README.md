@@ -21,6 +21,7 @@ This Techlab is based on OpenShift V3.3.
 
 ### Additional Labs
 
+- [Start hacking scala](additional-labs/scala.md)
 - [Own OpenShift Development Environment](additional-labs/development_environment.md)
 - [Logging EFK Stack](additional-labs/logging_efk_stack.md)
 
