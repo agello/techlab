@@ -31,7 +31,7 @@ Now it is time to deploy the sample app. Do this with the following command:
 
 oc new-app https://github/**GITHUBUSERNAME**/s2i-scala --contextdir=java8 --strategy=docker --name=scala
 
-``$ oc new-app https://github.com/agello/s2i-scala/ --context-dir=java8  --strategy=docker --name=scala``
+``$ oc new-app https://github.com/GITHUBUSERNAME/s2i-scala/ --context-dir=java8  --strategy=docker --name=scala``
 
 As indicated in the output you can folow the build with ``oc logs -f bc/scala``, much easier is to log into the openshift web portal and follow the build there from the Build menu. 
 
