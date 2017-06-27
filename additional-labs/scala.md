@@ -17,9 +17,7 @@ Create a project for this exercise, use the following naming strategy:
 **[USERNAME]**-scala
 
 For example:
-``$ oc new-project tomcc-scala
-
-Now using project "tomcc-scala" on server "https://openshift-master.lab.``
+``$ oc new-project tomcc-scala``
 
 ## Make a fork of the sample application
 
