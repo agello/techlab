@@ -6,7 +6,6 @@ For this excercise we will deploy our own version of a scala webapp using the [p
 We specifically use a web-framework because openshift is geared towards web-apps and api's both of which are strong suites of play.
 
 > **Note:**
-
 > In order to successfully complete this exercise you need to be familiar with the core concepts of openshift. More specifically the following prerequisites must be met:
 > 
 > - Your own github account
@@ -19,6 +18,7 @@ Create a project for this exercise, use the following naming strategy:
 
 For example:
 ``$ oc new-project tomcc-scala
+
 Now using project "tomcc-scala" on server "https://openshift-master.lab.``
 
 ## Make a fork of the sample application
@@ -33,25 +33,7 @@ Now it is time to deploy the sample app. Do this with the following command:
 
 oc new-app https://github/**[GITHUBUSERNAME]**/s2i-scala --contextdir=java8 --strategy=docker --name=scala
 
-```$ oc new-app https://github.com/agello/s2i-scala/ --context-dir=java8  --strategy=docker --name=scala
---> Found Docker image bb81a09 (4 months old) from Docker Hub for "openshift/base-centos7"
-    * An image stream will be created as "base-centos7:latest" that will track the source image
-    * A Docker build using source code from https://github.com/agello/s2i-scala/ will be created
-      * The resulting image will be pushed to image stream "scala:latest"
-      * Every time "base-centos7:latest" changes a new build will be triggered
-    * This image will be deployed in deployment config "scala"
-    * Ports 8778, 9000 will be load balanced by service "scala"
-      * Other containers can access this service through the hostname "scala"
-    * WARNING: Image "openshift/base-centos7" runs as the 'root' user which may not be permitted by your cluster administrator
---> Creating resources with label app=scala ...
-    imagestream "base-centos7" created
-    imagestream "scala" created
-    buildconfig "scala" created
-    deploymentconfig "scala" created
-    service "scala" created
---> Success
-    Build scheduled, use 'oc logs -f bc/scala' to track its progress.
-    Run 'oc status' to view your app.```
+``$ oc new-app https://github.com/agello/s2i-scala/ --context-dir=java8  --strategy=docker --name=scala``
 
 As indicated in the output you can folow the build with ``oc logs -f bc/scala``, much easier is to log into the openshift web portal and follow the build there from the Build menu. 
 
@@ -67,7 +49,7 @@ The application is running now. We have a singel container running without any c
 
 In the overview page the following warning should be displayed:
 
-```scala has containers without health checks, which ensure your application is running correctly. Add Health Checks```
+``scala has containers without health checks, which ensure your application is running correctly. Add Health Checks``
 
 Add a health check by clicking on **Add Health Checks**
 
