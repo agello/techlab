@@ -40,7 +40,7 @@ Now use the web interface to expose port 9000 to the internet. You should be gre
 
 > **Do not skip this step!**
 
-From this moment on the application is live an reachable from the internet. Check this by going to the url mentioned in the openshift overview page.
+From this moment on the application is live and reachable from the internet. Check this by going to the url mentioned in the openshift overview page.
 
 ## Create a health check
 The application is running now. We have a singel container running without any checks. If the container crashes it is restarted. However, we have no functional check to see if the application is performing well. In order te be able to scale properly and have confidence in the uptime of our application we need a health check.
