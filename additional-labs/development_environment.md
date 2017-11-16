@@ -28,7 +28,63 @@ Then you can try again a `oc cluster up`.
 
 The complete documentation is available at https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md.
 
-#### Ubuntu 16.04
+## CentOS 7
+
+1. Download and install CentOS 7 (Minimal ISO is fine)
+2. Install docker
+
+      **Note**
+      CentOS 7 ships an older docker: 1.12. However the oc cluster up has some issues with the latest version of Docker
+
+   - Enable IPv4 forwarding: ``sysctl net.ipv4.ip_forward=1`` 
+   - Install and enable Docker: 
+      ```
+      yum install -y wget bzip2 git yum-utils device-mapper-persistent-data lvm2
+      yum install docker
+      systemctl enable docker
+      ```
+
+3. Enable insecure registry: ``vi /etc/sysconfig/docker``
+
+     ```
+     INSECURE_REGISTRY='--insecure-registry 172.30.0.0/16'
+     ```
+
+4. Start docker: ``systemctl start docker``
+
+5. Setup firewall
+    ```
+    firewall-cmd --permanent --new-zone dockerc
+    firewall-cmd --permanent --zone dockerc --add-source 172.17.0.0/16
+    firewall-cmd --permanent --zone dockerc --add-port 8443/tcp
+    firewall-cmd --permanent --zone dockerc --add-port 53/udp
+    firewall-cmd --permanent --zone dockerc --add-port 8053/udp
+    firewall-cmd --reload
+    ```
+
+6. Install oc
+
+    ```
+    wget https://github.com/openshift/origin/releases/download/v1.5.1/openshift-origin-client-tools-v1.5.1-7b451fc-linux-64bit.tar.gz
+    tar -xvzf openshift-origin-client-tools*.tar.gz
+    mv openshift-origin-client-tools*/oc /usr/local/bin/
+    ```
+
+7. Start oc cluster:  ``oc cluster up``
+
+8. Check status
+
+    ```
+    oc login -u system:admin
+    oc project default
+    oc get pods
+    NAME                            READY     STATUS      RESTARTS   AGE
+    docker-registry-1-8hxn4         1/1       Running     0          11m
+    persistent-volume-setup-fn98b   0/1       Completed   0          11m
+    router-1-100hm                  1/1       Running     0          11m
+    ```  
+
+## Ubuntu 16.04
 
 The setup for Ubuntu 16.04 is a little different than Fedora, CentOS or RHEL, because the registry access has to be configured differently.
 
